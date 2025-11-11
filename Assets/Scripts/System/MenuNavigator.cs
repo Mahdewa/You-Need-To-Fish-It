@@ -10,7 +10,7 @@ public class MenuNavigator : MonoBehaviour
         PlayerPrefs.Save();
         
         // Load scene game baru
-        SceneManager.LoadScene("In Game");
+        SceneManager.LoadScene("Prologue");
     }
     
     public void LoadGame()
@@ -24,7 +24,6 @@ public class MenuNavigator : MonoBehaviour
         }
         
         SaveSystem.instance.LoadGameData();
-        SceneManager.LoadScene("In Game");
     }
 
     public void OpenSettings()
