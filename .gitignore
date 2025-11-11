@@ -1,0 +1,18 @@
+# Folder yang dibuat oleh Unity
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# File yang dibuat oleh OS atau IDE
+.DS_Store
+.vscode/
+Thumbs.db
+*.sln
+*.csproj
+*.suo
+*.user
+*.userprefs
