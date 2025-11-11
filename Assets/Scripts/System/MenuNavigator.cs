@@ -6,7 +6,7 @@ public class MenuNavigator : MonoBehaviour
     public void PlayGame()
     {
         // SceneLoader.sceneToLoad = "In Game";
-        SceneManager.LoadScene("In Game");
+        SceneManager.LoadScene("Prologue");
     }
 
     public void OpenSettings()
