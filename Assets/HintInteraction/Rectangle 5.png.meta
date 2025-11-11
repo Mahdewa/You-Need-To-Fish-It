@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 5e450d1ca04b2ff4e9ca8f3799718ef1
+guid: 657e05a8e2e6de9478977066657231f4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1652048822248982032
-    second: 1. Foreground 1_0
-  - first:
-      213: 4008650411200674710
-    second: 1. Foreground 1_1
-  - first:
-      213: 3822729280727909765
-    second: 1. Foreground 1_2
-  - first:
-      213: -7492645607737160271
-    second: 1. Foreground 1_3
-  - first:
-      213: 3128927771564542392
-    second: 1. Foreground 1_4
+      213: 5359986216648080172
+    second: Rectangle 5_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1. Foreground 1_0
+      name: Rectangle 5_0
       rect:
         serializedVersion: 2
-        x: 2650
+        x: 0
         y: 0
-        width: 22
-        height: 15
+        width: 408
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,96 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 016c0c1a6a14de610800000000000000
-      internalID: 1652048822248982032
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1. Foreground 1_1
-      rect:
-        serializedVersion: 2
-        x: 2696
-        y: 0
-        width: 25
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 69bf65c6f4691a730800000000000000
-      internalID: 4008650411200674710
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1. Foreground 1_2
-      rect:
-        serializedVersion: 2
-        x: 2723
-        y: 0
-        width: 21
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5858542f6001d0530800000000000000
-      internalID: 3822729280727909765
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1. Foreground 1_3
-      rect:
-        serializedVersion: 2
-        x: 2867
-        y: 0
-        width: 7280
-        height: 1377
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1bd8fea7486c40890800000000000000
-      internalID: -7492645607737160271
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1. Foreground 1_4
-      rect:
-        serializedVersion: 2
-        x: 11329
-        y: 0
-        width: 162
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8b985fffa3f2c6b20800000000000000
-      internalID: 3128927771564542392
+      spriteID: c2b7c4cc01f726a40800000000000000
+      internalID: 5359986216648080172
       vertices: []
       indices: 
       edges: []
@@ -235,11 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1. Foreground 1_0: 1652048822248982032
-      1. Foreground 1_1: 4008650411200674710
-      1. Foreground 1_2: 3822729280727909765
-      1. Foreground 1_3: -7492645607737160271
-      1. Foreground 1_4: 3128927771564542392
+      Rectangle 5_0: 5359986216648080172
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
@@ -18,9 +19,13 @@ public class UIManager : MonoBehaviour
     public float notificationDuration = 2.5f;
     private Coroutine notificationCoroutine;
 
-    [Header("Referensi Notifikasi KONTEKS (Persistent)")]
-    public GameObject persistentPanel; // Panel "Tekan E"
-    public TextMeshProUGUI persistentText;
+    [Header("Notifikasi KONTEKS (Persistent Asset)")]
+    public Image persistentImagePrompt;
+    public Sprite promptAsset;
+
+    // [Header("Referensi Notifikasi KONTEKS (Persistent)")]
+    // public GameObject persistentPanel; // Panel "Tekan E"
+    // public TextMeshProUGUI persistentText;
 
     [Header("Referensi Chat Bubble")]
     public PlayerChatBubble playerChatBubble;
@@ -29,7 +34,7 @@ public class UIManager : MonoBehaviour
     {
         // Sembunyikan kedua panel di awal
         if (notificationPanel != null) notificationPanel.SetActive(false);
-        if (persistentPanel != null) persistentPanel.SetActive(false);
+        if (persistentImagePrompt != null) persistentImagePrompt.gameObject.SetActive(false);
 
         SaveSystem.instance.LoadGameData();
     }
@@ -38,6 +43,11 @@ public class UIManager : MonoBehaviour
     // (Dipanggil untuk "Ikan Lolos", "Energi Habis", dll.)
     public void ShowNotification(string message)
     {
+        if (notificationPanel == null || notificationText == null)
+        {
+            Debug.LogWarning("UIManager: notificationPanel atau notificationText belum di-assign di Inspector!");
+            return;
+        }
         if (notificationCoroutine != null)
         {
             StopCoroutine(notificationCoroutine);
@@ -54,20 +64,20 @@ public class UIManager : MonoBehaviour
         notificationCoroutine = null;
     }
 
-    public void ShowPersistentNotification(string message)
+    public void ShowPersistentNotification(Sprite sprite)
     {
-        if (persistentPanel != null)
+        if (persistentImagePrompt != null && sprite != null)
         {
-            persistentText.text = message;
-            persistentPanel.SetActive(true);
+            persistentImagePrompt.sprite = sprite;
+            persistentImagePrompt.gameObject.SetActive(true);
         }
     }
 
     public void HidePersistentNotification()
     {
-        if (persistentPanel != null)
+        if (persistentImagePrompt != null)
         {
-            persistentPanel.SetActive(false);
+            persistentImagePrompt.gameObject.SetActive(false);
         }
     }
 
@@ -82,4 +92,5 @@ public class UIManager : MonoBehaviour
             ShowNotification(message);
         }
     }
+
 }

@@ -1,25 +1,22 @@
 fileFormatVersion: 2
-guid: fb301b1e3a9ba214f897464bc789523a
+guid: c11f773bbcf4f0f4b98aa08b19e2877d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5314379746780528827
-    second: 2.Objects_0
+      213: -1458138632305021097
+    second: Talk_0
   - first:
-      213: -5998950837992868164
-    second: 2.Objects_1
+      213: 4655957168593684396
+    second: Talk_1
   - first:
-      213: 965942455743347153
-    second: 2.Objects_2
+      213: -7680739874221200304
+    second: Talk_2
   - first:
-      213: -4402179083859438896
-    second: 2.Objects_3
+      213: 8946560853039718929
+    second: Talk_3
   - first:
-      213: -3892248258870293305
-    second: 2.Objects_4
-  - first:
-      213: 2017822717007521077
-    second: 2.Objects_5
+      213: -7172403887468238248
+    second: Talk_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2.Objects_0
+      name: Talk_0
       rect:
         serializedVersion: 2
-        x: 1505
-        y: 261
-        width: 1274
-        height: 330
+        x: 0
+        y: 0
+        width: 60
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb04260193870c940800000000000000
-      internalID: 5314379746780528827
+      spriteID: 75f6f24b3a6a3cbe0800000000000000
+      internalID: -1458138632305021097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2.Objects_1
+      name: Talk_1
       rect:
         serializedVersion: 2
-        x: 2828
-        y: 150
-        width: 182
-        height: 190
+        x: 72
+        y: 21
+        width: 19
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb637642ff17fbca0800000000000000
-      internalID: -5998950837992868164
+      spriteID: ca7c57360684d9040800000000000000
+      internalID: 4655957168593684396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2.Objects_2
+      name: Talk_2
       rect:
         serializedVersion: 2
-        x: 5995
-        y: 170
-        width: 178
-        height: 117
+        x: 87
+        y: 21
+        width: 20
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d9fc04bb87b76d00800000000000000
-      internalID: 965942455743347153
+      spriteID: 05cedd857c7886590800000000000000
+      internalID: -7680739874221200304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2.Objects_3
+      name: Talk_3
       rect:
         serializedVersion: 2
-        x: 6171
-        y: 255
-        width: 553
-        height: 312
+        x: 108
+        y: 21
+        width: 7
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d257ec627158e2c0800000000000000
-      internalID: -4402179083859438896
+      spriteID: 11229d6e1b1982c70800000000000000
+      internalID: 8946560853039718929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2.Objects_4
+      name: Talk_4
       rect:
         serializedVersion: 2
-        x: 6765
-        y: 198
-        width: 487
-        height: 288
+        x: 116
+        y: 21
+        width: 18
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,30 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7cc4760a4d4fbf9c0800000000000000
-      internalID: -3892248258870293305
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2.Objects_5
-      rect:
-        serializedVersion: 2
-        x: 7431
-        y: 227
-        width: 1095
-        height: 466
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 53562faf11fb00c10800000000000000
-      internalID: 2017822717007521077
+      spriteID: 85a23d55aa0867c90800000000000000
+      internalID: -7172403887468238248
       vertices: []
       indices: 
       edges: []
@@ -260,12 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      2.Objects_0: 5314379746780528827
-      2.Objects_1: -5998950837992868164
-      2.Objects_2: 965942455743347153
-      2.Objects_3: -4402179083859438896
-      2.Objects_4: -3892248258870293305
-      2.Objects_5: 2017822717007521077
+      Talk_0: -1458138632305021097
+      Talk_1: 4655957168593684396
+      Talk_2: -7680739874221200304
+      Talk_3: 8946560853039718929
+      Talk_4: -7172403887468238248
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

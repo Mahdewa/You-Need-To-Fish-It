@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool canTalkToNPC = false;
     private bool isAtBigBoatDock = false;
     private bool isInteractingWithNPC = false;
+    private InteractionPromptAsset currentPromptAssetScript;
 
     // --- Variabel Sistem Memancing ---
     [Header("Sistem Memancing")]
@@ -71,10 +72,10 @@ public class PlayerController : MonoBehaviour
         if (isAtBigBoatDock && Input.GetKeyDown(KeyCode.E)) {
             if (InventorySystem.instance.ownsBigBoat) {
                 // Jika sudah, tamatkan game
-                // WinGame();
+                WinGame();
             }
             else {
-                UIManager.instance.ShowNotification("HARUS BELI KAPALNYA DULU!");
+                UIManager.instance.ShowNotification("YOU NEED TO BUY THE SHIP FIRST!");
             }
             return;
         }
@@ -86,7 +87,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                UIManager.instance.ShowNotification("HARUS BELI PERAHU INI DULU!");
+                UIManager.instance.ShowNotification("YOU NEED TO BUY THE BOAT FIRST");
                 // (Nanti bisa ganti UIManager.instance.ShowNotification dengan memunculkan UI Text)
             }
             return;
@@ -104,9 +105,15 @@ public class PlayerController : MonoBehaviour
             
             // Perbarui UI Konteks untuk menampilkan opsi Jual/Beli
             if (!InventorySystem.instance.hasSmallBoat) {
-                UIManager.instance.ShowPersistentNotification($"J = Jual | B = Beli Perahu Kecil ({smallBoatPrice} Uang)");
+                // Tampilkan aset untuk "Beli Perahu Kecil"
+                if (currentPromptAssetScript != null && currentPromptAssetScript.boatPurchasePrompt != null) {
+                    UIManager.instance.ShowPersistentNotification(currentPromptAssetScript.boatPurchasePrompt);
+                }
             } else {
-                UIManager.instance.ShowPersistentNotification($"J = Jual | B = Beli Kapal Besar ({bigBoatPrice} Uang)");
+                // Tampilkan aset untuk "Beli Kapal Besar"
+                if (currentPromptAssetScript != null && currentPromptAssetScript.shipPurchasePrompt != null) {
+                    UIManager.instance.ShowPersistentNotification(currentPromptAssetScript.shipPurchasePrompt);
+                }
             }
             return; // Hentikan frame
         }
@@ -174,9 +181,9 @@ public class PlayerController : MonoBehaviour
             // 3. Tambahkan uang
             InventorySystem.instance.AddMoney(moneyEarned);
             
-            UIManager.instance.ShowNotification("MONEY!");
+            UIManager.instance.ShowPlayerBubble("MONEY!");
         } else {
-            UIManager.instance.ShowNotification("NOTHING TO SELL");
+            UIManager.instance.ShowPlayerBubble("NOTHING TO SELL");
         }
     }
 
@@ -184,7 +191,7 @@ public class PlayerController : MonoBehaviour
         bool success = InventorySystem.instance.PurchaseItem(smallBoatPrice);
         if (success) {
             InventorySystem.instance.hasSmallBoat = true;
-            UIManager.instance.ShowNotification("PERAHU KECIL BERHASIL DIBELI! SEKARANG KAMU BISA MEMANCING DI LAUTAN MENGGUNAKAN PERAHU.");
+            UIManager.instance.ShowNotification("CONGRATULATIONS YOU HAVE BOUGHT THE BOAT! YOU CAN NOW USE IT TO FISH AT SEA!");
         }
     }
 
@@ -192,7 +199,7 @@ public class PlayerController : MonoBehaviour
     private void BuyBigBoat() {
         // Cek dulu apakah sudah punya
         if (InventorySystem.instance.ownsBigBoat) {
-            UIManager.instance.ShowNotification("AKU UDAH PUNYA KAPAL INI.");
+            UIManager.instance.ShowNotification("YOU ALREADY OWN THE SHIP!");
             return;
         }
         
@@ -200,7 +207,7 @@ public class PlayerController : MonoBehaviour
         bool success = InventorySystem.instance.PurchaseItem(bigBoatPrice);
         if (success) {
             InventorySystem.instance.ownsBigBoat = true;
-            UIManager.instance.ShowNotification("KAPAL BESAR BERHASIL DIBELI! SEKARANG KAMU BISA MENYELESAIKAN PERJALANANMU!");
+            UIManager.instance.ShowNotification("CONGRATULATIONS YOU HAVE BOUGHT THE SHIP! LETS TAKE A LOOK AND SEE WHAT'S GONNA HAPPEN!");
         }
     }
 
@@ -228,7 +235,7 @@ public class PlayerController : MonoBehaviour
     // --- Coroutine MENCARI UMPAN (PERUBAHAN BESAR DI SINI) ---
     private IEnumerator StartBaitSequence() {
         isBusy = true; // Player sibuk, tidak bisa bergerak
-        UIManager.instance.ShowNotification("!!??");
+        UIManager.instance.ShowPlayerBubble("!!??");
 
 
         float timer = 0f;
@@ -267,7 +274,7 @@ public class PlayerController : MonoBehaviour
 
         // Cek Energi
         if (!EnergySystem.instance.HasEnoughEnergy(baitEnergyCost)) {
-            UIManager.instance.ShowNotification("I'M TIRED.");
+            UIManager.instance.ShowPlayerBubble("I'M TIRED.");
             isBusy = false;
             yield break; // Hentikan
         }
@@ -282,12 +289,12 @@ public class PlayerController : MonoBehaviour
         if (Random.value <= baitSuccessChance) {
             // BERHASIL
             InventorySystem.instance.AddBait(1);
-            UIManager.instance.ShowNotification("YEAYY!!!");
+            UIManager.instance.ShowPlayerBubble("YEAYY!!!");
 
         }
         else {
             // GAGAL
-            UIManager.instance.ShowNotification("HUFT, UNLUCKY.");
+            UIManager.instance.ShowPlayerBubble("HUFT, UNLUCKY.");
         }
 
         isBusy = false; // Selesai, player bisa gerak lagi
@@ -297,11 +304,11 @@ public class PlayerController : MonoBehaviour
     // --- Coroutine Memancing ---
     private IEnumerator StartFishingSequence() {
         if (!InventorySystem.instance.HasBait(1)) {
-            UIManager.instance.ShowNotification("GAPUNYA UMPAN");
+            UIManager.instance.ShowPlayerBubble("NO BAIT");
             yield break;
         }
         if (!EnergySystem.instance.HasEnoughEnergy(fishingEnergyCost)) {
-            UIManager.instance.ShowNotification("ISTIRAHAT DULU, CAPEK.");
+            UIManager.instance.ShowPlayerBubble("I'M TIRED");
             yield break;
         }
         
@@ -310,15 +317,15 @@ public class PlayerController : MonoBehaviour
         EnergySystem.instance.UseEnergy(fishingEnergyCost);
         
         currentFishingState = FishingState.Casting;
-        UIManager.instance.ShowNotification("Melempar kail..."); 
+        UIManager.instance.ShowNotification("THROWING..."); 
         yield return new WaitForSeconds(0.5f); 
 
         currentFishingState = FishingState.Waiting;
-        UIManager.instance.ShowNotification("Menunggu ikan...");
+        UIManager.instance.ShowNotification("WAITING...");
         yield return new WaitForSeconds(fishingWaitTime); 
 
         currentFishingState = FishingState.Hooked;
-        UIManager.instance.ShowNotification("!");
+        UIManager.instance.ShowPlayerBubble("!");
 
         float hookTimer = 0f;
         bool playerReacted = false;
@@ -332,13 +339,13 @@ public class PlayerController : MonoBehaviour
         }
         
         if (!playerReacted) {
-            UIManager.instance.ShowNotification("YAH IKANNYA KABUR");
+            UIManager.instance.ShowNotification("FISH ESCAPED");
             currentFishingState = FishingState.None; 
             yield break; 
         }
 
         currentFishingState = FishingState.Reeling;
-        UIManager.instance.ShowNotification("MULAI MENARIK!");
+        UIManager.instance.ShowNotification("REELING!");
         yield return new WaitForSeconds(reelingDuration - hookTimer);
 
         UIManager.instance.ShowNotification("??!!!");
@@ -348,23 +355,23 @@ public class PlayerController : MonoBehaviour
         if (isOnBoat) {
             // Player ada di perahu -> pakai chance LAUT
             currentChance = seaFishingSuccessChance;
-            UIManager.instance.ShowNotification($"MEMANCING DI LAUT... (CHANCE: {currentChance * 100}%)");
+            UIManager.instance.ShowNotification($"FISHING AT SEA... (CHANCE: {currentChance * 100}%)");
         } else {
             // Player di darat (jembatan) -> pakai chance JEMBATAN
             currentChance = bridgeFishingSuccessChance;
-            UIManager.instance.ShowNotification($"MEMANCING DI JEMBATAN... (CHANCE: {currentChance * 100}%)");
+            UIManager.instance.ShowNotification($"MEMANCING AT BRIDGE... (CHANCE: {currentChance * 100}%)");
         }
 
         // 2. Gunakan 'currentChance' untuk menentukan hasil
         if (Random.value <= currentChance) { 
-            UIManager.instance.ShowNotification("YEAAYY DAPAT IKAN!"); 
+            UIManager.instance.ShowPlayerBubble("GOT A FISH!");
             InventorySystem.instance.AddRawFish(1); 
         } else { 
-            UIManager.instance.ShowNotification("ADUH IKANNYA LEPAS!"); 
+            UIManager.instance.ShowPlayerBubble("HUFT, UNLUCKY!"); 
         }
         yield return new WaitForSeconds(1.0f); 
 
-        UIManager.instance.ShowNotification("SIAP MEMANCING LAGI.");
+        // UIManager.instance.ShowNotification("SIAP MEMANCING LAGI.");
         currentFishingState = FishingState.None;
     }
 
@@ -393,57 +400,104 @@ public class PlayerController : MonoBehaviour
 
     // --- Logika Trigger (Tidak Berubah) ---
     private void OnTriggerEnter2D(Collider2D other) {
+        // 1. Coba dapatkan script aset dari trigger
+        // (Kita gunakan GetComponent, bukan GetCom...InChildren, karena script-nya ada di trigger itu sendiri)
+        InteractionPromptAsset assetScript = other.GetComponent<InteractionPromptAsset>();
+
+        // 2. Jika trigger ini punya script aset, tampilkan aset 'default'-nya
+        if (assetScript != null && assetScript.defaultPrompt != null) 
+        {
+            UIManager.instance.ShowPersistentNotification(assetScript.defaultPrompt);
+            currentPromptAssetScript = assetScript; // <-- Simpan referensinya
+        }
+
         if (other.CompareTag("Dock")) {
             isAtDock = true;
-            UIManager.instance.ShowPersistentNotification("TEKAN 'E' UNTUK NAIK PERAHU.");
+            // UIManager.instance.ShowPersistentNotification("TEKAN 'E' UNTUK NAIK PERAHU.");
         }
         if (other.CompareTag("BigBoatDock")) {
             isAtBigBoatDock = true;
-            UIManager.instance.ShowPersistentNotification("TEKAN 'E' UNTUK NAIK KAPAL.");
+            // UIManager.instance.ShowPersistentNotification("TEKAN 'E' UNTUK NAIK KAPAL.");
         }
         if (other.CompareTag("FishingZone")) { 
-            UIManager.instance.ShowPersistentNotification("KLIK KIRI UNTUK MULAI MEMANCING.");
+            // UIManager.instance.ShowPersistentNotification("KLIK KIRI UNTUK MULAI MEMANCING.");
             isInFishingZone = true; 
         }
         if (other.CompareTag("BaitZone")) {
-            UIManager.instance.ShowPersistentNotification("TEKAN & TAHAN 'E' UNTUK MENCARI UMPAN.");
+            // UIManager.instance.ShowPersistentNotification("TEKAN & TAHAN 'E' UNTUK MENCARI UMPAN.");
             isInBaitZone = true; 
         }
         if (other.CompareTag("Tent")) { 
-            UIManager.instance.ShowPersistentNotification("TEKAN 'R' UNTUK ISTIRAHAT.");
+            // UIManager.instance.ShowPersistentNotification("TEKAN 'R' UNTUK ISTIRAHAT.");
             canRestAtTent = true; 
         }
         if (other.CompareTag("NPC")) {
             canTalkToNPC = true;
-            UIManager.instance.ShowPersistentNotification("TEKAN 'E' UNTUK BICARA.");
+            // UIManager.instance.ShowPersistentNotification("TEKAN 'E' UNTUK BICARA.");
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        UIManager.instance.HidePersistentNotification();
+        currentPromptAssetScript = null;
+
         if (other.CompareTag("Dock")) { 
             isAtDock = false;
-            UIManager.instance.HidePersistentNotification();
+            // UIManager.instance.HidePersistentNotification();
         }
         if (other.CompareTag("BigBoatDock")) {
             isAtBigBoatDock = false;
-            UIManager.instance.HidePersistentNotification();
+            // UIManager.instance.HidePersistentNotification();
         }
         if (other.CompareTag("FishingZone")) { 
             isInFishingZone = false;
-            UIManager.instance.HidePersistentNotification();
+            // UIManager.instance.HidePersistentNotification();
         }
         if (other.CompareTag("BaitZone")) {
             isInBaitZone = false;
-            UIManager.instance.HidePersistentNotification();
+            // UIManager.instance.HidePersistentNotification();
         }
         if (other.CompareTag("Tent")) { 
             canRestAtTent = false;
-            UIManager.instance.HidePersistentNotification();
+            // UIManager.instance.HidePersistentNotification();
         }
         if (other.CompareTag("NPC")) {
             isInteractingWithNPC = false;
-            UIManager.instance.HidePersistentNotification();
+            canTalkToNPC = false;
+            // UIManager.instance.HidePersistentNotification();
         }
+    }
+
+    // --- Fungsi WIN GAME ---
+    private void WinGame()
+    {
+        // Tampilkan notifikasi kemenangan
+        UIManager.instance.ShowNotification("SELAMAT! KAMU TELAH MENYELESAIKAN PERJALANANMU!");
+        
+        // Disable player input (freeze game)
+        Time.timeScale = 0f;
+        
+        // Simpan data game (opsional)
+        if (SaveSystem.instance != null)
+        {
+            SaveSystem.instance.SaveGameData();
+        }
+        
+        // Setelah delay, reload ke scene awal atau tampilkan menu
+        StartCoroutine(WinGameSequence());
+    }
+
+    // --- Coroutine untuk Win Game Sequence ---
+    private IEnumerator WinGameSequence()
+    {
+        yield return new WaitForSecondsRealtime(3f); // Tunggu 3 detik (real time, bukan game time)
+        
+        // Kembalikan time scale ke normal
+        Time.timeScale = 1f;
+        
+        // Load scene menu atau scene lain sesuai kebutuhan
+        // UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
+        // Untuk saat ini, cukup tampilkan pesan
     }
 }

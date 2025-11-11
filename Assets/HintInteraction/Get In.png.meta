@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: 5e450d1ca04b2ff4e9ca8f3799718ef1
+guid: c47bc219125fc764abac70ebe41d6a9e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1652048822248982032
-    second: 1. Foreground 1_0
+      213: 7129651527343482045
+    second: Get In_0
   - first:
-      213: 4008650411200674710
-    second: 1. Foreground 1_1
+      213: -7967595439021030145
+    second: Get In_1
   - first:
-      213: 3822729280727909765
-    second: 1. Foreground 1_2
+      213: 139820533975527057
+    second: Get In_2
   - first:
-      213: -7492645607737160271
-    second: 1. Foreground 1_3
-  - first:
-      213: 3128927771564542392
-    second: 1. Foreground 1_4
+      213: -3490807154304231534
+    second: Get In_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1. Foreground 1_0
+      name: Get In_0
       rect:
         serializedVersion: 2
-        x: 2650
+        x: 0
         y: 0
-        width: 22
-        height: 15
+        width: 60
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 016c0c1a6a14de610800000000000000
-      internalID: 1652048822248982032
+      spriteID: db421a32a4c91f260800000000000000
+      internalID: 7129651527343482045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1. Foreground 1_1
+      name: Get In_1
       rect:
         serializedVersion: 2
-        x: 2696
-        y: 0
-        width: 25
-        height: 25
+        x: 73
+        y: 21
+        width: 20
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69bf65c6f4691a730800000000000000
-      internalID: 4008650411200674710
+      spriteID: ff4012f892a6d6190800000000000000
+      internalID: -7967595439021030145
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1. Foreground 1_2
+      name: Get In_2
       rect:
         serializedVersion: 2
-        x: 2723
-        y: 0
+        x: 93
+        y: 21
         width: 21
-        height: 22
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5858542f6001d0530800000000000000
-      internalID: 3822729280727909765
+      spriteID: 19eaaebe80eb0f100800000000000000
+      internalID: 139820533975527057
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1. Foreground 1_3
+      name: Get In_3
       rect:
         serializedVersion: 2
-        x: 2867
-        y: 0
-        width: 7280
-        height: 1377
+        x: 114
+        y: 13
+        width: 20
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,30 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1bd8fea7486c40890800000000000000
-      internalID: -7492645607737160271
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1. Foreground 1_4
-      rect:
-        serializedVersion: 2
-        x: 11329
-        y: 0
-        width: 162
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8b985fffa3f2c6b20800000000000000
-      internalID: 3128927771564542392
+      spriteID: 297dd4463692e8fc0800000000000000
+      internalID: -3490807154304231534
       vertices: []
       indices: 
       edges: []
@@ -235,11 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1. Foreground 1_0: 1652048822248982032
-      1. Foreground 1_1: 4008650411200674710
-      1. Foreground 1_2: 3822729280727909765
-      1. Foreground 1_3: -7492645607737160271
-      1. Foreground 1_4: 3128927771564542392
+      Get In_0: 7129651527343482045
+      Get In_1: -7967595439021030145
+      Get In_2: 139820533975527057
+      Get In_3: -3490807154304231534
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

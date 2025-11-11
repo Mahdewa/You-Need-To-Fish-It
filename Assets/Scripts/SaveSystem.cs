@@ -27,12 +27,16 @@ public class SaveSystem : MonoBehaviour
         // 1. Ambil data dari sistem lain
         int currentDay = TimeSystem.instance.GetCurrentDay();
         int money = InventorySystem.instance.money;
+        int rawFishCount = InventorySystem.instance.rawFishCount;
+        int baitCount = InventorySystem.instance.baitCount;
         bool hasSmallBoat = InventorySystem.instance.hasSmallBoat;
         bool ownsBigBoat = InventorySystem.instance.ownsBigBoat;
 
         // 2. Simpan ke PlayerPrefs
         PlayerPrefs.SetInt("Save_CurrentDay", currentDay);
         PlayerPrefs.SetInt("Save_Money", money);
+        PlayerPrefs.SetInt("Save_RawFishCount", rawFishCount);
+        PlayerPrefs.SetInt("Save_BaitCount", baitCount);
         
         // PlayerPrefs tidak bisa simpan bool, jadi kita ubah ke int (1=true, 0=false)
         PlayerPrefs.SetInt("Save_HasSmallBoat", hasSmallBoat ? 1 : 0);
@@ -52,13 +56,15 @@ public class SaveSystem : MonoBehaviour
             // 1. Baca data dari PlayerPrefs
             int currentDay = PlayerPrefs.GetInt("Save_CurrentDay");
             int money = PlayerPrefs.GetInt("Save_Money");
+            int rawFishCount = PlayerPrefs.GetInt("Save_RawFishCount");
+            int baitCount = PlayerPrefs.GetInt("Save_BaitCount");
             bool hasSmallBoat = PlayerPrefs.GetInt("Save_HasSmallBoat") == 1; // 1 == true
             bool ownsBigBoat = PlayerPrefs.GetInt("Save_OwnsBigBoat") == 1;
 
             // 2. Kirim data ke sistem yang relevan
             // PENTING: Kita perlu fungsi baru di TimeSystem/InventorySystem
             TimeSystem.instance.LoadDay(currentDay);
-            InventorySystem.instance.LoadInventory(money, hasSmallBoat, ownsBigBoat);
+            InventorySystem.instance.LoadInventory(money, rawFishCount, baitCount, hasSmallBoat, ownsBigBoat);
         }
         else
         {

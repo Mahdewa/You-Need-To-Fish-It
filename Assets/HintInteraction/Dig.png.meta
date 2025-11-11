@@ -1,37 +1,40 @@
 fileFormatVersion: 2
-guid: 9e40fee2bb0cbf941a5f9b7aa93e16fc
+guid: f37ad8136b6439141ab271dd8400dea3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7027857901685636282
-    second: Buy_0
+      213: -4559095976506759094
+    second: Dig_0
   - first:
-      213: 4127163549065911961
-    second: Buy_1
+      213: 2099535207289045259
+    second: Dig_1
   - first:
-      213: 940534853088652179
-    second: Buy_2
+      213: 8680547507145982428
+    second: Dig_2
   - first:
-      213: -7438219985103161476
-    second: Buy_3
+      213: -2048607658474931373
+    second: Dig_3
   - first:
-      213: 3170925207585288523
-    second: Buy_4
+      213: -2322050525375513610
+    second: Dig_4
   - first:
-      213: 2201542498000115588
-    second: Buy_5
+      213: -6372613295417273570
+    second: Dig_5
   - first:
-      213: 900348050232023992
-    second: Buy_6
+      213: 5039235580917237625
+    second: Dig_6
   - first:
-      213: 5005775842691462688
-    second: Buy_7
+      213: -6908988976898662524
+    second: Dig_7
   - first:
-      213: -8914074999282461709
-    second: Buy_8
+      213: -1028972804690284025
+    second: Dig_8
   - first:
-      213: 1028060034140389089
-    second: Buy_9
+      213: -3938277106646161634
+    second: Dig_9
+  - first:
+      213: 5378467085785495953
+    second: Dig_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -127,7 +130,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Buy_0
+      name: Dig_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,17 +145,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6430b1e3978087e90800000000000000
-      internalID: -7027857901685636282
+      spriteID: a48e66f4d56dab0c0800000000000000
+      internalID: -4559095976506759094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buy_1
+      name: Dig_1
       rect:
         serializedVersion: 2
-        x: 72
+        x: 73
         y: 21
         width: 20
         height: 28
@@ -164,19 +167,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99e93089161a64930800000000000000
-      internalID: 4127163549065911961
+      spriteID: b01c3efa52c032d10800000000000000
+      internalID: 2099535207289045259
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buy_2
+      name: Dig_2
       rect:
         serializedVersion: 2
-        x: 92
+        x: 93
         y: 21
-        width: 19
+        width: 21
         height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -186,17 +189,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 39b293937737d0d00800000000000000
-      internalID: 940534853088652179
+      spriteID: cd1c65b57ff777870800000000000000
+      internalID: 8680547507145982428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buy_3
+      name: Dig_3
       rect:
         serializedVersion: 2
-        x: 112
+        x: 114
         y: 21
         width: 6
         height: 30
@@ -208,19 +211,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c77f6ba355226c890800000000000000
-      internalID: -7438219985103161476
+      spriteID: 35bf4784032e193e0800000000000000
+      internalID: -2048607658474931373
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buy_4
+      name: Dig_4
       rect:
         serializedVersion: 2
         x: 120
         y: 21
-        width: 6
+        width: 21
         height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -230,64 +233,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b41f37f0da3610c20800000000000000
-      internalID: 3170925207585288523
+      spriteID: 6fbbb74995b66cfd0800000000000000
+      internalID: -2322050525375513610
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buy_5
+      name: Dig_5
       rect:
         serializedVersion: 2
-        x: 135
-        y: 21
-        width: 14
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4871937dc337d8e10800000000000000
-      internalID: 2201542498000115588
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Buy_6
-      rect:
-        serializedVersion: 2
-        x: 159
-        y: 0
-        width: 61
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8bb9b4c08cdae7c00800000000000000
-      internalID: 900348050232023992
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Buy_7
-      rect:
-        serializedVersion: 2
-        x: 233
+        x: 147
         y: 22
-        width: 20
-        height: 27
+        width: 16
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,19 +255,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0263bd07b96187540800000000000000
-      internalID: 5005775842691462688
+      spriteID: e13d8bba8fdef87a0800000000000000
+      internalID: -6372613295417273570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buy_8
+      name: Dig_6
       rect:
         serializedVersion: 2
-        x: 253
+        x: 161
         y: 21
-        width: 18
+        width: 21
         height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -318,20 +277,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3f314965408da4480800000000000000
-      internalID: -8914074999282461709
+      spriteID: 977c414df06fee540800000000000000
+      internalID: 5039235580917237625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buy_9
+      name: Dig_7
       rect:
         serializedVersion: 2
-        x: 270
-        y: 14
-        width: 20
-        height: 28
+        x: 188
+        y: 21
+        width: 21
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -340,8 +299,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1eeb6b67727644e00800000000000000
-      internalID: 1028060034140389089
+      spriteID: 48f9dd281275e10a0800000000000000
+      internalID: -6908988976898662524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dig_8
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 42
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 702f5e49faa58b1f0800000000000000
+      internalID: -1028972804690284025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dig_9
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 21
+        width: 7
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e176d4f56dd6859c0800000000000000
+      internalID: -3938277106646161634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dig_10
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 13
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 199ff54715724aa40800000000000000
+      internalID: 5378467085785495953
       vertices: []
       indices: 
       edges: []
@@ -360,16 +385,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Buy_0: -7027857901685636282
-      Buy_1: 4127163549065911961
-      Buy_2: 940534853088652179
-      Buy_3: -7438219985103161476
-      Buy_4: 3170925207585288523
-      Buy_5: 2201542498000115588
-      Buy_6: 900348050232023992
-      Buy_7: 5005775842691462688
-      Buy_8: -8914074999282461709
-      Buy_9: 1028060034140389089
+      Dig_0: -4559095976506759094
+      Dig_1: 2099535207289045259
+      Dig_10: 5378467085785495953
+      Dig_2: 8680547507145982428
+      Dig_3: -2048607658474931373
+      Dig_4: -2322050525375513610
+      Dig_5: -6372613295417273570
+      Dig_6: 5039235580917237625
+      Dig_7: -6908988976898662524
+      Dig_8: -1028972804690284025
+      Dig_9: -3938277106646161634
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -29,9 +29,11 @@ public class InventorySystem : MonoBehaviour {
         UpdateInventoryUI();
     }
 
-    public void LoadInventory(int loadedMoney, bool loadedSmallBoat, bool loadedBigBoat)
+    public void LoadInventory(int loadedMoney, int loadedRawFishCount, int loadedBaitCount, bool loadedSmallBoat, bool loadedBigBoat)
     {
         money = loadedMoney;
+        rawFishCount = loadedRawFishCount;
+        baitCount = loadedBaitCount;
         hasSmallBoat = loadedSmallBoat;
         ownsBigBoat = loadedBigBoat;
 

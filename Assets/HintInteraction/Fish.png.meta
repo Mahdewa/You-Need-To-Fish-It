@@ -1,22 +1,25 @@
 fileFormatVersion: 2
-guid: 5e450d1ca04b2ff4e9ca8f3799718ef1
+guid: a40e555aaa1041646bb34453bcc01d01
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1652048822248982032
-    second: 1. Foreground 1_0
+      213: -1915776564401465818
+    second: Fish_0
   - first:
-      213: 4008650411200674710
-    second: 1. Foreground 1_1
+      213: -8217542319786499577
+    second: Fish_1
   - first:
-      213: 3822729280727909765
-    second: 1. Foreground 1_2
+      213: 9156854346723684101
+    second: Fish_2
   - first:
-      213: -7492645607737160271
-    second: 1. Foreground 1_3
+      213: -3878289797822314810
+    second: Fish_3
   - first:
-      213: 3128927771564542392
-    second: 1. Foreground 1_4
+      213: 6406061711972274550
+    second: Fish_4
+  - first:
+      213: 900668292290427548
+    second: Fish_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1. Foreground 1_0
+      name: Fish_0
       rect:
         serializedVersion: 2
-        x: 2650
+        x: 0
         y: 0
-        width: 22
-        height: 15
+        width: 171
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 016c0c1a6a14de610800000000000000
-      internalID: 1652048822248982032
+      spriteID: 62615d96d5bc965e0800000000000000
+      internalID: -1915776564401465818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1. Foreground 1_1
+      name: Fish_1
       rect:
         serializedVersion: 2
-        x: 2696
-        y: 0
-        width: 25
-        height: 25
+        x: 184
+        y: 21
+        width: 18
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,19 +152,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69bf65c6f4691a730800000000000000
-      internalID: 4008650411200674710
+      spriteID: 702e26e6ccc65fd80800000000000000
+      internalID: -8217542319786499577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1. Foreground 1_2
+      name: Fish_2
       rect:
         serializedVersion: 2
-        x: 2723
-        y: 0
-        width: 21
+        x: 202
+        y: 42
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50fe474638ea31f70800000000000000
+      internalID: 9156854346723684101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fish_3
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 21
+        width: 6
         height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -171,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5858542f6001d0530800000000000000
-      internalID: 3822729280727909765
+      spriteID: 6c687c81afb8d2ac0800000000000000
+      internalID: -3878289797822314810
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1. Foreground 1_3
+      name: Fish_4
       rect:
         serializedVersion: 2
-        x: 2867
-        y: 0
-        width: 7280
-        height: 1377
+        x: 209
+        y: 21
+        width: 17
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1bd8fea7486c40890800000000000000
-      internalID: -7492645607737160271
+      spriteID: 671965faf27e6e850800000000000000
+      internalID: 6406061711972274550
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1. Foreground 1_4
+      name: Fish_5
       rect:
         serializedVersion: 2
-        x: 11329
-        y: 0
-        width: 162
-        height: 206
+        x: 227
+        y: 21
+        width: 18
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,8 +240,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8b985fffa3f2c6b20800000000000000
-      internalID: 3128927771564542392
+      spriteID: c9abd663a01df7c00800000000000000
+      internalID: 900668292290427548
       vertices: []
       indices: 
       edges: []
@@ -235,11 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1. Foreground 1_0: 1652048822248982032
-      1. Foreground 1_1: 4008650411200674710
-      1. Foreground 1_2: 3822729280727909765
-      1. Foreground 1_3: -7492645607737160271
-      1. Foreground 1_4: 3128927771564542392
+      Fish_0: -1915776564401465818
+      Fish_1: -8217542319786499577
+      Fish_2: 9156854346723684101
+      Fish_3: -3878289797822314810
+      Fish_4: 6406061711972274550
+      Fish_5: 900668292290427548
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
