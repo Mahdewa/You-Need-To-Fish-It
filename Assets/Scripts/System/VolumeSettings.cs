@@ -24,12 +24,12 @@ public class VolumeSettings : MonoBehaviour
     private void LoadVolumeSettings()
     {
         // Muat volume BGM, jika tidak ada data, gunakan nilai default 0.75
-        float bgmVolume = PlayerPrefs.GetFloat(BGM_VOLUME_KEY, 0.75f);
+        float bgmVolume = PlayerPrefs.GetFloat(BGM_VOLUME_KEY, 0.50f);
         bgmSlider.value = bgmVolume;
         AudioManager.Instance.ChangeBGMVolume(bgmVolume);
 
         // Muat volume SFX, jika tidak ada data, gunakan nilai default 0.75
-        float sfxVolume = PlayerPrefs.GetFloat(SFX_VOLUME_KEY, 0.75f);
+        float sfxVolume = PlayerPrefs.GetFloat(SFX_VOLUME_KEY, 0.50f);
         sfxSlider.value = sfxVolume;
         AudioManager.Instance.ChangeSFXVolume(sfxVolume);
     }

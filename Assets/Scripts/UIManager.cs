@@ -36,6 +36,12 @@ public class UIManager : MonoBehaviour
         if (notificationPanel != null) notificationPanel.SetActive(false);
         if (persistentImagePrompt != null) persistentImagePrompt.gameObject.SetActive(false);
 
+        // Load volume settings dari PlayerPrefs ke AudioManager
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.LoadVolumeSettings();
+        }
+
         SaveSystem.instance.LoadGameData();
     }
 
