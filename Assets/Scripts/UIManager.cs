@@ -23,6 +23,10 @@ public class UIManager : MonoBehaviour
     public Image persistentImagePrompt;
     public Sprite promptAsset;
 
+    [Header("Resting Asset")]
+    public Image restingImage;
+    public Sprite restingAsset;
+
     // [Header("Referensi Notifikasi KONTEKS (Persistent)")]
     // public GameObject persistentPanel; // Panel "Tekan E"
     // public TextMeshProUGUI persistentText;
@@ -35,6 +39,11 @@ public class UIManager : MonoBehaviour
         // Sembunyikan kedua panel di awal
         if (notificationPanel != null) notificationPanel.SetActive(false);
         if (persistentImagePrompt != null) persistentImagePrompt.gameObject.SetActive(false);
+        if (restingImage != null) restingImage.gameObject.SetActive(false);
+
+        // Debug: Cek apakah semua field sudah di-assign
+        Debug.Log($"UIManager Check - Resting Image: {(restingImage != null ? "OK" : "NOT ASSIGNED")}");
+        Debug.Log($"UIManager Check - Resting Asset: {(restingAsset != null ? "OK" : "NOT ASSIGNED")}");
 
         // Load volume settings dari PlayerPrefs ke AudioManager
         if (AudioManager.Instance != null)
@@ -85,6 +94,80 @@ public class UIManager : MonoBehaviour
         {
             persistentImagePrompt.gameObject.SetActive(false);
         }
+    }
+
+    public void ShowRestingImage()
+    {
+        if (restingImage == null)
+        {
+            Debug.LogWarning("UIManager: restingImage belum di-assign di Inspector!");
+            return;
+        }
+        
+        if (restingAsset == null)
+        {
+            Debug.LogWarning("UIManager: restingAsset belum di-assign di Inspector!");
+            return;
+        }
+        
+        restingImage.sprite = restingAsset;
+        StartCoroutine(FadeInRestingImage());
+    }
+
+    public void HideRestingImage()
+    {
+        if (restingImage != null)
+        {
+            StartCoroutine(FadeOutRestingImage());
+        }
+    }
+
+    // --- Coroutine untuk Fade In Resting Image ---
+    private IEnumerator FadeInRestingImage()
+    {
+        restingImage.gameObject.SetActive(true);
+        Color color = restingImage.color;
+        color.a = 0f;
+        restingImage.color = color;
+
+        float fadeDuration = 0.5f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            color.a = Mathf.Clamp01(elapsedTime / fadeDuration);
+            restingImage.color = color;
+            yield return null;
+        }
+
+        color.a = 1f;
+        restingImage.color = color;
+        Debug.Log("Resting Image Fade In selesai!");
+    }
+
+    // --- Coroutine untuk Fade Out Resting Image ---
+    private IEnumerator FadeOutRestingImage()
+    {
+        Color color = restingImage.color;
+        color.a = 1f;
+        restingImage.color = color;
+
+        float fadeDuration = 0.5f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            color.a = Mathf.Clamp01(1f - (elapsedTime / fadeDuration));
+            restingImage.color = color;
+            yield return null;
+        }
+
+        color.a = 0f;
+        restingImage.color = color;
+        restingImage.gameObject.SetActive(false);
+        Debug.Log("Resting Image Fade Out selesai!");
     }
 
     public void ShowPlayerBubble(string message)

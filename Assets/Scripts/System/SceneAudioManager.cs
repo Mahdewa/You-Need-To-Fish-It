@@ -7,6 +7,12 @@ public class SceneAudioManager : MonoBehaviour
     {
         string currentScene = SceneManager.GetActiveScene().name;
 
+        // Load volume settings terlebih dahulu
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.LoadVolumeSettings();
+        }
+
         // Cek musik apa yang seharusnya dimainkan di scene ini
         switch (currentScene)
         {

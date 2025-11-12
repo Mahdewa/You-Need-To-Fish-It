@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -34,12 +35,12 @@ public class PlayerController : MonoBehaviour
     public float fishingWaitTime = 3.0f; 
     public float reelingDuration = 4.0f; 
     public float fishingEnergyCost = 10f;
-    public float bridgeFishingSuccessChance = 0.3f; // 30%
-    public float seaFishingSuccessChance = 0.3f; // 30%
+    public float bridgeFishingSuccessChance = 0.5f; // 30%
+    public float seaFishingSuccessChance = 0.8f; // 30%
 
     // --- Variabel Sistem Bait ---
     [Header("Sistem Bait")]
-    public float baitSuccessChance = 0.3f; // 30%
+    public float baitSuccessChance = 0.5f; // 30%
     public float baitEnergyCost = 5f;
     public float baitHoldTime = 2.0f; // Waktu (detik) untuk menahan tombol
 
@@ -53,6 +54,15 @@ public class PlayerController : MonoBehaviour
     public int smallBoatPrice = 100; // Sesuai permintaan Anda
     public int bigBoatPrice = 1000;  // Objektif utama
     
+    // --- RUNNING SFX ---
+    [Header("Running SFX")]
+    [SerializeField] private float runningSfxInterval = 0.38f; // Interval untuk play running SFX
+    private float runningSfxTimer = 0f;
+    private bool isRunningSfxPlaying = false; // Track apakah running SFX sedang aktif
+    
+    // --- ANIMASI ---
+    private PlayerAnimator playerAnimator;
+    
     private enum FishingState { None, Casting, Waiting, Hooked, Reeling, Result }
     private FishingState currentFishingState = FishingState.None;
 
@@ -62,6 +72,7 @@ public class PlayerController : MonoBehaviour
         rbPlayer = GetComponent<Rigidbody2D>(); 
         playerSprite = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
+        playerAnimator = GetComponent<PlayerAnimator>();
     }
 
     void Update()
@@ -75,7 +86,7 @@ public class PlayerController : MonoBehaviour
                 WinGame();
             }
             else {
-                UIManager.instance.ShowNotification("YOU NEED TO BUY THE SHIP FIRST!");
+                UIManager.instance.ShowPlayerBubble("I NEED TO BUY THIS SHIP!");
             }
             return;
         }
@@ -87,7 +98,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                UIManager.instance.ShowNotification("YOU NEED TO BUY THE BOAT FIRST");
+                UIManager.instance.ShowPlayerBubble("I NEED TO BUY THIS BOAT!");
                 // (Nanti bisa ganti UIManager.instance.ShowNotification dengan memunculkan UI Text)
             }
             return;
@@ -100,6 +111,14 @@ public class PlayerController : MonoBehaviour
         }
         if (canTalkToNPC && !isOnBoat && Input.GetKeyDown(KeyCode.E))
         {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX("button");
+            }
+            else
+            {
+                Debug.LogError("AudioManager tidak ditemukan! Pastikan scene Main Menu dijalankan pertama kali.");
+            }
             // Set status "sedang berinteraksi"
             isInteractingWithNPC = true;
             
@@ -120,6 +139,7 @@ public class PlayerController : MonoBehaviour
         // --- SISTEM ISTIRAHAT ---
         if (canRestAtTent && !isOnBoat && Input.GetKeyDown(KeyCode.R))
         {
+            AudioManager.Instance.PlaySFX("button");
             StartCoroutine(RestSequence());
             return;
         }
@@ -133,10 +153,12 @@ public class PlayerController : MonoBehaviour
         {
             // Tombol 'J' untuk JUAL
             if (Input.GetKeyDown(KeyCode.J)) {
+                AudioManager.Instance.PlaySFX("button");
                 SellAllRawFish();
             }
             // Tombol 'B' untuk BELI
             if (Input.GetKeyDown(KeyCode.B)) {
+                AudioManager.Instance.PlaySFX("button");
                 if (!InventorySystem.instance.hasSmallBoat) { BuySmallBoat(); }
                 else { BuyBigBoat(); }
             }
@@ -150,6 +172,15 @@ public class PlayerController : MonoBehaviour
         {
             rbPlayer.linearVelocity = new Vector2(0, rbPlayer.linearVelocity.y); // Hentikan gerak X
             rbBoat.linearVelocity = Vector2.zero;
+            runningSfxTimer = 0f; // Reset timer
+            
+            // Stop running SFX jika sedang aktif
+            if (isRunningSfxPlaying)
+            {
+                AudioManager.Instance.StopSFX();
+                isRunningSfxPlaying = false;
+            }
+            
             return;
         }
         
@@ -158,12 +189,62 @@ public class PlayerController : MonoBehaviour
         if (isOnBoat)
         {
             rbBoat.linearVelocity = new Vector2(moveInput * moveSpeed, 0);
+            playerAnimator.PlayWalk(moveInput);
+            playerAnimator.FlipSprite(moveInput);
+            runningSfxTimer = 0f; // Reset timer saat di perahu
+            
+            // Stop running SFX jika sedang aktif
+            if (isRunningSfxPlaying)
+            {
+                AudioManager.Instance.StopSFX();
+                isRunningSfxPlaying = false;
+            }
         }
         else
         {
             rbPlayer.linearVelocity = new Vector2(moveInput * moveSpeed, rbPlayer.linearVelocity.y);
-            if (moveInput > 0) playerSprite.flipX = false;
-            else if (moveInput < 0) playerSprite.flipX = true;
+            
+            // --- INTEGRASI ANIMASI ---
+            if (moveInput != 0)
+            {
+                playerAnimator.PlayWalk(moveInput);
+            }
+            else
+            {
+                playerAnimator.PlayIdle();
+            }
+            playerAnimator.FlipSprite(moveInput);
+            
+            // --- RUNNING SFX LOGIC ---
+            if (moveInput != 0) // Player sedang bergerak
+            {
+                // Jika running SFX belum aktif, start sekarang
+                if (!isRunningSfxPlaying)
+                {
+                    isRunningSfxPlaying = true;
+                    runningSfxTimer = 0f;
+                }
+                
+                runningSfxTimer += Time.deltaTime;
+                
+                // Mainkan SFX setiap interval
+                if (runningSfxTimer >= runningSfxInterval)
+                {
+                    AudioManager.Instance.PlaySFX("lari");
+                    runningSfxTimer = 0f;
+                }
+            }
+            else // Player berhenti
+            {
+                // Stop running SFX jika sedang aktif
+                if (isRunningSfxPlaying)
+                {
+                    AudioManager.Instance.StopSFX();
+                    isRunningSfxPlaying = false;
+                }
+                
+                runningSfxTimer = 0f; // Reset timer
+            }
         }
     }
 
@@ -191,7 +272,7 @@ public class PlayerController : MonoBehaviour
         bool success = InventorySystem.instance.PurchaseItem(smallBoatPrice);
         if (success) {
             InventorySystem.instance.hasSmallBoat = true;
-            UIManager.instance.ShowNotification("CONGRATULATIONS YOU HAVE BOUGHT THE BOAT! YOU CAN NOW USE IT TO FISH AT SEA!");
+            UIManager.instance.ShowPlayerBubble("THE BOAT IS MINE NOW >.<");
         }
     }
 
@@ -199,7 +280,7 @@ public class PlayerController : MonoBehaviour
     private void BuyBigBoat() {
         // Cek dulu apakah sudah punya
         if (InventorySystem.instance.ownsBigBoat) {
-            UIManager.instance.ShowNotification("YOU ALREADY OWN THE SHIP!");
+            UIManager.instance.ShowPlayerBubble("I ALREADY OWN IT!");
             return;
         }
         
@@ -207,7 +288,7 @@ public class PlayerController : MonoBehaviour
         bool success = InventorySystem.instance.PurchaseItem(bigBoatPrice);
         if (success) {
             InventorySystem.instance.ownsBigBoat = true;
-            UIManager.instance.ShowNotification("CONGRATULATIONS YOU HAVE BOUGHT THE SHIP! LETS TAKE A LOOK AND SEE WHAT'S GONNA HAPPEN!");
+            UIManager.instance.ShowPlayerBubble("NOW I CAN GO TO THE NEXT ISLAND!");
         }
     }
 
@@ -215,17 +296,19 @@ public class PlayerController : MonoBehaviour
     private IEnumerator RestSequence()
     {
         isBusy = true; // Player sibuk, tidak bisa bergerak
-        // UIManager.instance.ShowNotification("Istirahat...");
-
-        // (Di sini Anda bisa memicu animasi 'fade-to-black')
+        playerAnimator.PlayIdle(); // Ensure idle animation during rest
         
-        yield return new WaitForSeconds(restTime); // Mensimulasikan waktu istirahat
+        // Tampilkan resting image
+        UIManager.instance.ShowRestingImage();
 
-        // Panggil fungsi BARU dari EnergySystem
+        // Mensimulasikan waktu istirahat
+        yield return new WaitForSeconds(restTime);
+
+        // Panggil fungsi dari EnergySystem
         EnergySystem.instance.RestoreAllEnergy();
         
-        // (Di sini Anda bisa memicu animasi 'fade-in')
-        // UIManager.instance.ShowNotification("Segar kembali!");
+        // Sembunyikan resting image
+        UIManager.instance.HideRestingImage();
 
         TimeSystem.instance.PassDay();
 
@@ -236,9 +319,11 @@ public class PlayerController : MonoBehaviour
     private IEnumerator StartBaitSequence() {
         isBusy = true; // Player sibuk, tidak bisa bergerak
         UIManager.instance.ShowPlayerBubble("!!??");
-
+        playerAnimator.PlayBaiting(); // Trigger baiting animation
 
         float timer = 0f;
+        float sfxTimer = 0f; // Timer untuk SFX loop
+        float sfxInterval = 0.8f; // Interval untuk memainkan SFX (setiap 0.3 detik)
 
         // (Di sini Anda bisa memunculkan UI Progress Bar)
         // progressBar.fillAmount = 0;
@@ -247,8 +332,9 @@ public class PlayerController : MonoBehaviour
         while (timer < baitHoldTime) {
             // Cek 1: Apakah tombol 'E' MASIH ditekan?
             if (!Input.GetKey(KeyCode.E)) {
-                UIManager.instance.ShowNotification("SEARCH CANCELED");
+                UIManager.instance.ShowPlayerBubble("NEVERMIND");
                 isBusy = false;
+                playerAnimator.PlayIdle(); // Return to idle
                 // (Sembunyikan UI Progress Bar)
                 yield break; // Hentikan coroutine
             }
@@ -256,12 +342,20 @@ public class PlayerController : MonoBehaviour
             // Cek 2: Apakah player masih di zona bait?
             if (!isInBaitZone) {
                 isBusy = false;
+                playerAnimator.PlayIdle(); // Return to idle
                 // (Sembunyikan UI Progress Bar)
                 yield break; // Hentikan coroutine
             }
 
             // Lanjutkan timer
             timer += Time.deltaTime;
+            sfxTimer += Time.deltaTime;
+
+            // Mainkan SFX setiap interval
+            if (sfxTimer >= sfxInterval) {
+                AudioManager.Instance.PlaySFX("baiting");
+                sfxTimer = 0f; // Reset sfx timer
+            }
             
             // (Update UI Progress Bar di sini)
             // progressBar.fillAmount = timer / baitHoldTime;
@@ -276,6 +370,7 @@ public class PlayerController : MonoBehaviour
         if (!EnergySystem.instance.HasEnoughEnergy(baitEnergyCost)) {
             UIManager.instance.ShowPlayerBubble("I'M TIRED.");
             isBusy = false;
+            playerAnimator.PlayIdle(); // Return to idle
             yield break; // Hentikan
         }
 
@@ -298,6 +393,7 @@ public class PlayerController : MonoBehaviour
         }
 
         isBusy = false; // Selesai, player bisa gerak lagi
+        playerAnimator.PlayIdle(); // Return to idle
         // (Sembunyikan UI Progress Bar)
     }
 
@@ -316,15 +412,21 @@ public class PlayerController : MonoBehaviour
         InventorySystem.instance.UseBait(1);
         EnergySystem.instance.UseEnergy(fishingEnergyCost);
         
+        isBusy = true; // TAMBAH INI - Lock semua input saat fishing
         currentFishingState = FishingState.Casting;
-        UIManager.instance.ShowNotification("THROWING..."); 
+        playerAnimator.PlayFishingStart(); // Trigger fishing start animation
+        AudioManager.Instance.PlaySFX("mancing-awal");
+        UIManager.instance.ShowPlayerBubble("THROWING..."); 
         yield return new WaitForSeconds(0.5f); 
 
         currentFishingState = FishingState.Waiting;
-        UIManager.instance.ShowNotification("WAITING...");
+        playerAnimator.PlayFishingWaiting(); // Trigger fishing waiting animation
+        UIManager.instance.ShowPlayerBubble("...");
         yield return new WaitForSeconds(fishingWaitTime); 
 
         currentFishingState = FishingState.Hooked;
+        AudioManager.Instance.PlaySFX("button");
+        CameraShake.Shake(duration: 0.3f, magnitude: 0.1f);
         UIManager.instance.ShowPlayerBubble("!");
 
         float hookTimer = 0f;
@@ -339,39 +441,70 @@ public class PlayerController : MonoBehaviour
         }
         
         if (!playerReacted) {
-            UIManager.instance.ShowNotification("FISH ESCAPED");
+            UIManager.instance.ShowPlayerBubble("WHAT THE...");
+            playerAnimator.PlayFishingEnd(); // End fishing animation
+            isBusy = false; // TAMBAH INI - unlock player
             currentFishingState = FishingState.None; 
             yield break; 
         }
 
         currentFishingState = FishingState.Reeling;
-        UIManager.instance.ShowNotification("REELING!");
-        yield return new WaitForSeconds(reelingDuration - hookTimer);
+        playerAnimator.PlayFishingEnd(); // Trigger fishing end/reeling animation
+        UIManager.instance.ShowPlayerBubble("PULL UP!");
+        
+        // Mainkan reeling SFX dalam loop selama reelingDuration
+        float reelingTimer = 0f;
+        float reelingDurationRemaining = reelingDuration - hookTimer;
+        float reelingFxInterval = 0.5f; // Interval untuk play reeling SFX
+        float reelingFxTimer = 0f;
+        
+        while (reelingTimer < reelingDurationRemaining) {
+            reelingTimer += Time.deltaTime;
+            reelingFxTimer += Time.deltaTime;
+            
+            // Mainkan SFX setiap interval
+            if (reelingFxTimer >= reelingFxInterval) {
+                CameraShake.Shake(duration: 0.3f, magnitude: 0.1f);
+                AudioManager.Instance.PlaySFX("mancing-reeling");
+                reelingFxTimer = 0f;
+            }
+            
+            yield return null;
+        }
 
-        UIManager.instance.ShowNotification("??!!!");
+        // Force stop SFX reeling setelah durasi habis
+        AudioManager.Instance.StopSFX();
+
         currentFishingState = FishingState.Result;
         
         float currentChance;
         if (isOnBoat) {
             // Player ada di perahu -> pakai chance LAUT
             currentChance = seaFishingSuccessChance;
-            UIManager.instance.ShowNotification($"FISHING AT SEA... (CHANCE: {currentChance * 100}%)");
+            // UIManager.instance.ShowNotification($"FISHING AT SEA... (CHANCE: {currentChance * 100}%)");
         } else {
             // Player di darat (jembatan) -> pakai chance JEMBATAN
             currentChance = bridgeFishingSuccessChance;
-            UIManager.instance.ShowNotification($"MEMANCING AT BRIDGE... (CHANCE: {currentChance * 100}%)");
+            // UIManager.instance.ShowNotification($"MEMANCING AT BRIDGE... (CHANCE: {currentChance * 100}%)");
         }
 
         // 2. Gunakan 'currentChance' untuk menentukan hasil
         if (Random.value <= currentChance) { 
+            AudioManager.Instance.PlaySFX("mancing-berhasil");
             UIManager.instance.ShowPlayerBubble("GOT A FISH!");
-            InventorySystem.instance.AddRawFish(1); 
+            InventorySystem.instance.AddRawFish(1);
+            
+            // Trigger camera shake saat berhasil dapat ikan
+            CameraShake.Shake(duration: 0.3f, magnitude: 0.4f);
         } else { 
+            AudioManager.Instance.PlaySFX("mancing-gagal");
             UIManager.instance.ShowPlayerBubble("HUFT, UNLUCKY!"); 
         }
         yield return new WaitForSeconds(1.0f); 
 
         // UIManager.instance.ShowNotification("SIAP MEMANCING LAGI.");
+        playerAnimator.PlayIdle(); // Return to idle
+        isBusy = false; // TAMBAH INI - unlock player input
         currentFishingState = FishingState.None;
     }
 
@@ -386,6 +519,7 @@ public class PlayerController : MonoBehaviour
             this.transform.SetParent(rbBoat.transform); 
             this.transform.localPosition = boatSeatPosition.localPosition; 
             rbPlayer.linearVelocity = Vector2.zero;
+            playerAnimator.SetBoatState(true); // Set boat idle animation
         }
         else
         {
@@ -395,6 +529,7 @@ public class PlayerController : MonoBehaviour
             this.transform.position = playerLandPosition.position; 
             rbBoat.transform.position = boatStartPosition.position;
             rbBoat.linearVelocity = Vector2.zero;
+            playerAnimator.SetBoatState(false); // Set land idle animation
         }
     }
 
@@ -473,31 +608,27 @@ public class PlayerController : MonoBehaviour
     private void WinGame()
     {
         // Tampilkan notifikasi kemenangan
-        UIManager.instance.ShowNotification("SELAMAT! KAMU TELAH MENYELESAIKAN PERJALANANMU!");
+        UIManager.instance.ShowPlayerBubble("LETS GOO!!");
         
-        // Disable player input (freeze game)
-        Time.timeScale = 0f;
-        
-        // Simpan data game (opsional)
-        if (SaveSystem.instance != null)
-        {
-            SaveSystem.instance.SaveGameData();
-        }
-        
-        // Setelah delay, reload ke scene awal atau tampilkan menu
+        // Setelah delay, masuk ke scene Epilogue
         StartCoroutine(WinGameSequence());
     }
 
     // --- Coroutine untuk Win Game Sequence ---
     private IEnumerator WinGameSequence()
     {
-        yield return new WaitForSecondsRealtime(3f); // Tunggu 3 detik (real time, bukan game time)
+        // Tunggu notifikasi ditampilkan
+        yield return new WaitForSeconds(2f);
         
-        // Kembalikan time scale ke normal
-        Time.timeScale = 1f;
+        // Fade to black selama 2 detik
+        yield return StartCoroutine(FadeManager.FadeToBlack(2f));
         
-        // Load scene menu atau scene lain sesuai kebutuhan
-        // UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
-        // Untuk saat ini, cukup tampilkan pesan
+        // Hapus semua save data (progress game sudah tamat)
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        Debug.Log("--- SAVE DATA DIHANCURKAN ---");
+        
+        // Masuk ke scene Epilogue
+        SceneManager.LoadScene("Epilogue");
     }
 }

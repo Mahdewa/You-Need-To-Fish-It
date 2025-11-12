@@ -165,4 +165,14 @@ public class AudioManager : MonoBehaviour
     {
         return bgmSource != null && bgmSource.isPlaying;
     }
+
+    // Method untuk stop SFX (menghentikan SFX yang sedang playing)
+    public void StopSFX()
+    {
+        if (sfxSource != null && sfxSource.isPlaying)
+        {
+            sfxSource.Stop();
+            Debug.Log("SFX Stopped");
+        }
+    }
 }

@@ -829,7 +829,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5561665765474925660, guid: d1375a8758966d74d8e6c617a7f96607, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01730d9e417ff4045829841c1985394f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1351,7 +1351,7 @@ MonoBehaviour:
   - name: button
     clip: {fileID: 8300000, guid: 05a0a7539678c094e859e8a1408601f1, type: 3}
   - name: lari
-    clip: {fileID: 8300000, guid: ba5dc1bb42b12734e88d024d1fff498f, type: 3}
+    clip: {fileID: 8300000, guid: 4d73063bfc3daee4f8d4352cd34484e2, type: 3}
   - name: mancing-awal
     clip: {fileID: 8300000, guid: 76b8ddfc0d7244141babd57b6b323cc2, type: 3}
   - name: mancing-berhasil
@@ -1381,7 +1381,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1478,7 +1478,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
