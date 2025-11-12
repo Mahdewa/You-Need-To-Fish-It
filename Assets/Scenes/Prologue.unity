@@ -620,19 +620,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels:
-  - panelImage: {fileID: -4910088520043721169, guid: 9530d39d064137840890fa83f23b6f56, type: 3}
+  - panelImage: {fileID: 7070110564016678328, guid: 0e87ed0effa8e1849a892160d3e0cc9b, type: 3}
     narrationText: 
-  - panelImage: {fileID: -4983721108374671077, guid: 1ee28ff646d721247be49240d43bf6eb, type: 3}
+  - panelImage: {fileID: 4485300514341696304, guid: f3e0dd3aa4ba1bc499cb9033fb68ff9e, type: 3}
     narrationText: 
-  - panelImage: {fileID: 8579111415464493206, guid: 9d7ae366b9edc5b4eade73c8b8101e59, type: 3}
+  - panelImage: {fileID: -1037706523378725117, guid: 0ca169f851da595459515f2e8d7cef2d, type: 3}
     narrationText: 
-  - panelImage: {fileID: 2957404852419100943, guid: cd7af1da2bb1c114fbb790378eb2be28, type: 3}
+  - panelImage: {fileID: 6990061210014496370, guid: 23756d8478660bc4b977bceab79f96e9, type: 3}
     narrationText: 
-  - panelImage: {fileID: 6626051464634953487, guid: f3e6d16690d89a046a3ee0f029c4d588, type: 3}
-    narrationText: 
-  - panelImage: {fileID: 4051853549349518899, guid: 64ee3822a6b1ab840b34fb5f17998f20, type: 3}
-    narrationText: 
-  - panelImage: {fileID: -2158441306721915952, guid: 9592282020825c44c9dc842734ef9d10, type: 3}
+  - panelImage: {fileID: 495865272442532948, guid: 2f68d5dd00c5a1f47bb0e436658cf8ce, type: 3}
     narrationText: 
   nextSceneName: In Game
   fadeDuration: 0.5
@@ -704,7 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
