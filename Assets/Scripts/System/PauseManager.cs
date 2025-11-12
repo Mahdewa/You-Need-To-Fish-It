@@ -110,6 +110,7 @@ public class PauseManager : MonoBehaviour
         }
         
         Time.timeScale = 1f; // Kembalikan time scale ke normal
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        SceneLoader.sceneToLoad = "MainMenu";
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LoadingScene");
     }
 }

@@ -405,8 +405,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 11
+  m_fontSizeBase: 11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1913,9 +1913,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!70 &411046056
 CapsuleCollider2D:
@@ -2095,15 +2095,15 @@ MonoBehaviour:
   fishingWaitTime: 3
   reelingDuration: 4
   fishingEnergyCost: 10
-  bridgeFishingSuccessChance: 0.3
-  seaFishingSuccessChance: 0.3
-  baitSuccessChance: 0.3
+  bridgeFishingSuccessChance: 0.7
+  seaFishingSuccessChance: 0.9
+  baitSuccessChance: 0.8
   baitEnergyCost: 5
   baitHoldTime: 2
   restTime: 1.5
   rawFishPrice: 10
   smallBoatPrice: 100
-  bigBoatPrice: 1000
+  bigBoatPrice: 500
   runningSfxInterval: 0.38
 --- !u!61 &421088967
 BoxCollider2D:
@@ -3728,7 +3728,7 @@ Transform:
   m_GameObject: {fileID: 942703669}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 165.47, y: 0, z: 0}
+  m_LocalPosition: {x: 154.9, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3831,8 +3831,8 @@ MonoBehaviour:
   baitCount: 5
   rawFishCount: 0
   money: 0
-  hasSmallBoat: 1
-  ownsBigBoat: 1
+  hasSmallBoat: 0
+  ownsBigBoat: 0
   baitText: {fileID: 79155826}
   rawFishText: {fileID: 2007880141}
   moneyText: {fileID: 1811938527}
@@ -4240,7 +4240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -37.5, y: -37}
+  m_AnchoredPosition: {x: -34, y: -34}
   m_SizeDelta: {x: 124.6047, y: 124.6047}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &999679741
@@ -5395,7 +5395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1424657532}
   m_Layer: 0
-  m_Name: EventTrigger
+  m_Name: System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6160,6 +6160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1750562990}
   - component: {fileID: 1750562989}
+  - component: {fileID: 1750562991}
   m_Layer: 0
   m_Name: 7. Cloud
   m_TagString: Untagged
@@ -6237,6 +6238,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 779888834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1750562991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750562988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a3f894b9834bf43876fe9144ba8a33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.3
+  moveDistance: 10
 --- !u!1 &1800210743
 GameObject:
   m_ObjectHideFlags: 0
@@ -6398,8 +6413,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 11
+  m_fontSizeBase: 11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7160,8 +7175,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 11
+  m_fontSizeBase: 11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

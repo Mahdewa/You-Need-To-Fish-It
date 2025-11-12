@@ -36,7 +36,11 @@ public class EpilogueManager : MonoBehaviour
         // Fade to black
         yield return StartCoroutine(FadeManager.FadeToBlack(1f));
         
+        // Hapus save ketika pemain telah menyelesaikan game
+        SaveSystem.DeleteAllSaveData();
+
         // Load MainMenu
-        SceneManager.LoadScene("MainMenu");
+        SceneLoader.sceneToLoad = "MainMenu";
+        SceneManager.LoadScene("LoadingScene");
     }
 }

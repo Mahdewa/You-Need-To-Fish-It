@@ -8,9 +8,11 @@ public class MenuNavigator : MonoBehaviour
         // Hapus semua data save
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
-        
+        FadeManager.DestroyFadeManager();
+
         // Load scene game baru
-        SceneManager.LoadScene("Prologue");
+        SceneLoader.sceneToLoad = "Prologue";
+        SceneManager.LoadScene("LoadingScene");
     }
     
     public void LoadGame()
@@ -18,8 +20,10 @@ public class MenuNavigator : MonoBehaviour
         // Cek apakah SaveSystem sudah ada
         if (SaveSystem.instance == null)
         {
+            FadeManager.DestroyFadeManager();
             Debug.LogWarning("SaveSystem belum di-instantiate. Memulai game baru saja.");
-            SceneManager.LoadScene("In Game");
+            SceneLoader.sceneToLoad = "In Game";
+            SceneManager.LoadScene("LoadingScene");
             return;
         }
         

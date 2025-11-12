@@ -274,6 +274,10 @@ public class PlayerController : MonoBehaviour
             InventorySystem.instance.hasSmallBoat = true;
             UIManager.instance.ShowPlayerBubble("THE BOAT IS MINE NOW >.<");
         }
+        else {
+            int coinsNeeded = smallBoatPrice - InventorySystem.instance.money;
+            UIManager.instance.ShowPlayerBubble($"{coinsNeeded} MORE FOR A BOAT");
+        }
     }
 
     // --- Fungsi BARU: Beli Kapal Besar (Objektif) ---
@@ -288,7 +292,11 @@ public class PlayerController : MonoBehaviour
         bool success = InventorySystem.instance.PurchaseItem(bigBoatPrice);
         if (success) {
             InventorySystem.instance.ownsBigBoat = true;
-            UIManager.instance.ShowPlayerBubble("NOW I CAN GO TO THE NEXT ISLAND!");
+            UIManager.instance.ShowPlayerBubble("NOW I CAN GO TO THE MAIN ISLAND!");
+        }
+        else {
+            int coinsNeeded = bigBoatPrice - InventorySystem.instance.money;
+            UIManager.instance.ShowPlayerBubble($"{coinsNeeded} MORE FOR A MOTORBOAT");
         }
     }
 

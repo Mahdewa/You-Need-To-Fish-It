@@ -25,6 +25,12 @@ public class FadeManager : MonoBehaviour
         CreateFadeCanvas();
     }
 
+    private void Start()
+    {
+        // Reset fade saat scene dimulai untuk menghindari layar tetap gelap
+        ResetFade();
+    }
+
     private void CreateFadeCanvas()
     {
         // Cek apakah sudah ada FadeCanvas
@@ -71,7 +77,7 @@ public class FadeManager : MonoBehaviour
         if (instance == null)
         {
             // Cek apakah sudah ada FadeManager di scene
-            FadeManager existingManager = FindObjectOfType<FadeManager>();
+            FadeManager existingManager = FindAnyObjectByType<FadeManager>();
             if (existingManager == null)
             {
                 // Buat FadeManager baru
@@ -79,6 +85,27 @@ public class FadeManager : MonoBehaviour
                 faderObj.AddComponent<FadeManager>();
                 Debug.Log("FadeManager dibuat otomatis!");
             }
+        }
+    }
+
+    // Reset fade ke alpha 0 (transparan)
+    public static void ResetFade()
+    {
+        if (instance != null && instance.canvasGroup != null)
+        {
+            instance.canvasGroup.alpha = 0f;
+            Debug.Log("Fade direset ke transparan!");
+        }
+    }
+
+    // Destroy FadeManager sepenuhnya
+    public static void DestroyFadeManager()
+    {
+        if (instance != null)
+        {
+            Destroy(instance.gameObject);
+            instance = null;
+            Debug.Log("FadeManager dihapus!");
         }
     }
 
