@@ -73,13 +73,13 @@ public class CollectionManager : MonoBehaviour
         // 2. Update Text Jumlah (Ambil dari Inventory)
         if (InventorySystem.instance != null) {
             if (smallCountText != null) 
-                smallCountText.text = "SMALL: " + InventorySystem.instance.smallFishCount;
+                smallCountText.text = "" + InventorySystem.instance.smallFishCount;
             
             if (mediumCountText != null) 
-                mediumCountText.text = "MEDIUM: " + InventorySystem.instance.mediumFishCount;
+                mediumCountText.text = "" + InventorySystem.instance.mediumFishCount;
             
             if (bigCountText != null) 
-                bigCountText.text = "BIG: " + InventorySystem.instance.bigFishCount;
+                bigCountText.text = "" + InventorySystem.instance.bigFishCount;
         }
     }
 

@@ -367,7 +367,6 @@ private void SellAllRawFish() {
         else
         {
             UIManager.instance.ShowPlayerBubble("NO MONEY!");
-            AudioManager.Instance.PlaySFX("mancing-gagal"); // Sound error
         }
     }
 
@@ -393,7 +392,6 @@ private void SellAllRawFish() {
         else
         {
             UIManager.instance.ShowPlayerBubble("NO MONEY!");
-            AudioManager.Instance.PlaySFX("mancing-gagal");
         }
     }
 

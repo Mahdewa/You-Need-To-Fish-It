@@ -127,7 +127,7 @@ public class DailyMissionManager : MonoBehaviour
         isMissionComplete = true;
         currentSoldToday = targetFishToday; // Cap di max
         
-        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("mancing-berhasil");
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("mission");
         if (missionText != null) missionText.text = "<s>TARGET TERCAPAI</s>";
     }
 
@@ -148,7 +148,7 @@ public class DailyMissionManager : MonoBehaviour
     private void TriggerGameOver()
     {
         Debug.Log("GAME OVER: Target harian tidak tercapai!");
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("MainMenu");
     }
 
     private void UpdateMissionUI()
@@ -158,12 +158,10 @@ public class DailyMissionManager : MonoBehaviour
             if (isMissionComplete)
             {
                 missionText.text = "<s>TARGET TERCAPAI</s>";
-                missionText.color = Color.green; 
             }
             else
             {
-                missionText.text = $"MISI: JUAL {currentSoldToday}/{targetFishToday} IKAN";
-                missionText.color = Color.white; 
+                missionText.text = $"JUAL {currentSoldToday}/{targetFishToday} IKAN";
             }
         }
     }

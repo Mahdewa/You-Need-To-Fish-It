@@ -1378,6 +1378,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8d5504ec60dd0664c8e663499421986b, type: 3}
   - name: baiting
     clip: {fileID: 8300000, guid: 57e4aa6a28b10a040a8ccbe9c7ffd467, type: 3}
+  - name: mission
+    clip: {fileID: 8300000, guid: 40e2a4bb4aec66c44a931b9ed9df80c6, type: 3}
   bgmSource: {fileID: 1964482924}
   sfxSource: {fileID: 1964482923}
   defaultBGMVolume: 0.2
