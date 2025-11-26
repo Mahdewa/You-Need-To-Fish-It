@@ -3,77 +3,83 @@ guid: 6568644c7bff3a44ea006b749763493e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5539011032921111051
-    second: Bait or Energy_0
+      213: -5205091053488975964
+    second: g-baitenergy_0
   - first:
-      213: 6565902624180262056
-    second: Bait or Energy_1
+      213: -5068517862274792949
+    second: g-baitenergy_1
   - first:
-      213: -7755936292392363120
-    second: Bait or Energy_2
+      213: 2897800990235207600
+    second: g-baitenergy_2
   - first:
-      213: 3358468856025643670
-    second: Bait or Energy_3
+      213: 4018186238852751476
+    second: g-baitenergy_3
   - first:
-      213: 6253435718195265783
-    second: Bait or Energy_4
+      213: -3956183481102155499
+    second: g-baitenergy_4
   - first:
-      213: -3454056023674394717
-    second: Bait or Energy_5
+      213: 2264794007652335665
+    second: g-baitenergy_5
   - first:
-      213: 7416955144969853119
-    second: Bait or Energy_6
+      213: 7317098260336005553
+    second: g-baitenergy_6
   - first:
-      213: 6307048578442144426
-    second: Bait or Energy_7
+      213: 4076462494492579261
+    second: g-baitenergy_7
   - first:
-      213: 3674793447312758563
-    second: Bait or Energy_8
+      213: 9068181334560816046
+    second: g-baitenergy_8
   - first:
-      213: 7768940859656464814
-    second: Bait or Energy_9
+      213: 7560228522422582073
+    second: g-baitenergy_9
   - first:
-      213: -712057593108721210
-    second: Bait or Energy_10
+      213: -5236096368497901375
+    second: g-baitenergy_10
   - first:
-      213: -8238179858797401191
-    second: Bait or Energy_11
+      213: -4070630182586968558
+    second: g-baitenergy_11
   - first:
-      213: -9106967873825624149
-    second: Bait or Energy_12
+      213: -1682016612814270618
+    second: g-baitenergy_12
   - first:
-      213: -4192408763960899989
-    second: Bait or Energy_13
+      213: -8235154490719962559
+    second: g-baitenergy_13
   - first:
-      213: 5057083901738814672
-    second: Bait or Energy_14
+      213: -4698738760573590937
+    second: g-baitenergy_14
   - first:
-      213: 8908267925462470771
-    second: Bait or Energy_15
+      213: -1307319751718974292
+    second: g-baitenergy_15
   - first:
-      213: 7299604989083035929
-    second: Bait or Energy_16
+      213: -4395353656301779474
+    second: g-baitenergy_16
   - first:
-      213: 7291308566701117501
-    second: Bait or Energy_17
+      213: 4890148636076910382
+    second: g-baitenergy_17
   - first:
-      213: -3691547872246341175
-    second: Bait or Energy_18
+      213: -8963325053320568972
+    second: g-baitenergy_18
   - first:
-      213: -2834179339428828294
-    second: Bait or Energy_19
+      213: -2044230100284249068
+    second: g-baitenergy_19
   - first:
-      213: -1721265781238528993
-    second: Bait or Energy_20
+      213: 811893674196040562
+    second: g-baitenergy_20
   - first:
-      213: -2631534945404985703
-    second: Bait or Energy_21
+      213: -1070178579377307058
+    second: g-baitenergy_21
   - first:
-      213: -4481133535694410059
-    second: Bait or Energy_22
+      213: 6156036468992825639
+    second: g-baitenergy_22
   - first:
-      213: 8399374909783883900
-    second: Bait or Energy_23
+      213: 8361408855310360613
+    second: g-baitenergy_23
+  - first:
+      213: -6862581455594786117
+    second: g-baitenergy_24
+  - first:
+      213: -5194420551361384074
+    second: g-baitenergy_25
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -144,7 +150,7 @@ TextureImporter:
     maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -208,7 +214,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bait or Energy_0
+      name: g-baitenergy_0
       rect:
         serializedVersion: 2
         x: 0
@@ -223,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b0a7b3000358edc40800000000000000
-      internalID: 5539011032921111051
+      spriteID: 4afc93db34dc3c7b0800000000000000
+      internalID: -5205091053488975964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_1
+      name: g-baitenergy_1
       rect:
         serializedVersion: 2
         x: 73
@@ -245,14 +251,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8a4d11826a5ce1b50800000000000000
-      internalID: 6565902624180262056
+      spriteID: b028361cbd109a9b0800000000000000
+      internalID: -5068517862274792949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_2
+      name: g-baitenergy_2
       rect:
         serializedVersion: 2
         x: 92
@@ -267,14 +273,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 09b9467e8016d5490800000000000000
-      internalID: -7755936292392363120
+      spriteID: 0b7aebcb5ae073820800000000000000
+      internalID: 2897800990235207600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_3
+      name: g-baitenergy_3
       rect:
         serializedVersion: 2
         x: 113
@@ -289,14 +295,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69afe9071adab9e20800000000000000
-      internalID: 3358468856025643670
+      spriteID: 4706e20581773c730800000000000000
+      internalID: 4018186238852751476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_4
+      name: g-baitenergy_4
       rect:
         serializedVersion: 2
         x: 113
@@ -311,14 +317,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f0c4c057aaa8c650800000000000000
-      internalID: 6253435718195265783
+      spriteID: 51143aea510d819c0800000000000000
+      internalID: -3956183481102155499
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_5
+      name: g-baitenergy_5
       rect:
         serializedVersion: 2
         x: 119
@@ -333,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3a7e69ac85ab010d0800000000000000
-      internalID: -3454056023674394717
+      spriteID: 1300d8b862a2e6f10800000000000000
+      internalID: 2264794007652335665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_6
+      name: g-baitenergy_6
       rect:
         serializedVersion: 2
         x: 142
@@ -355,14 +361,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fb81fea58615ee660800000000000000
-      internalID: 7416955144969853119
+      spriteID: 1b1d4f1a91e8b8560800000000000000
+      internalID: 7317098260336005553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_7
+      name: g-baitenergy_7
       rect:
         serializedVersion: 2
         x: 159
@@ -377,14 +383,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aaa2d231443278750800000000000000
-      internalID: 6307048578442144426
+      spriteID: db5de6c6a01829830800000000000000
+      internalID: 4076462494492579261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_8
+      name: g-baitenergy_8
       rect:
         serializedVersion: 2
         x: 233
@@ -399,14 +405,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3279202ab2d7ff230800000000000000
-      internalID: 3674793447312758563
+      spriteID: eab3355e0e6a8dd70800000000000000
+      internalID: 9068181334560816046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_9
+      name: g-baitenergy_9
       rect:
         serializedVersion: 2
         x: 252
@@ -421,14 +427,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ea967dcdc82d0db60800000000000000
-      internalID: 7768940859656464814
+      spriteID: 93b36cb09c35be860800000000000000
+      internalID: 7560228522422582073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_10
+      name: g-baitenergy_10
       rect:
         serializedVersion: 2
         x: 271
@@ -443,14 +449,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6c1922744634e16f0800000000000000
-      internalID: -712057593108721210
+      spriteID: 1c048f94816a557b0800000000000000
+      internalID: -5236096368497901375
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_11
+      name: g-baitenergy_11
       rect:
         serializedVersion: 2
         x: 290
@@ -465,14 +471,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99b6a90f01b1cad80800000000000000
-      internalID: -8238179858797401191
+      spriteID: 2169be28a673287c0800000000000000
+      internalID: -4070630182586968558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_12
+      name: g-baitenergy_12
       rect:
         serializedVersion: 2
         x: 302
@@ -487,14 +493,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bafaab338fc8d9180800000000000000
-      internalID: -9106967873825624149
+      spriteID: 66f46e66dc648a8e0800000000000000
+      internalID: -1682016612814270618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_13
+      name: g-baitenergy_13
       rect:
         serializedVersion: 2
         x: 321
@@ -509,14 +515,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b6640e6017291d5c0800000000000000
-      internalID: -4192408763960899989
+      spriteID: 14a7c265f9ad6bd80800000000000000
+      internalID: -8235154490719962559
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_14
+      name: g-baitenergy_14
       rect:
         serializedVersion: 2
         x: 71
@@ -531,14 +537,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0dc0d7ad30f5e2640800000000000000
-      internalID: 5057083901738814672
+      spriteID: 762e6a30ef9baceb0800000000000000
+      internalID: -4698738760573590937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_15
+      name: g-baitenergy_15
       rect:
         serializedVersion: 2
         x: 78
@@ -553,14 +559,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 370523dea7680ab70800000000000000
-      internalID: 8908267925462470771
+      spriteID: cac40febc977bdde0800000000000000
+      internalID: -1307319751718974292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_16
+      name: g-baitenergy_16
       rect:
         serializedVersion: 2
         x: 93
@@ -575,14 +581,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 919a6f600186d4560800000000000000
-      internalID: 7299604989083035929
+      spriteID: ee50bed13219003c0800000000000000
+      internalID: -4395353656301779474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_17
+      name: g-baitenergy_17
       rect:
         serializedVersion: 2
         x: 105
@@ -597,14 +603,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d309bf9a28eef2560800000000000000
-      internalID: 7291308566701117501
+      spriteID: e27a930864c4dd340800000000000000
+      internalID: 4890148636076910382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_18
+      name: g-baitenergy_18
       rect:
         serializedVersion: 2
         x: 120
@@ -619,14 +625,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9c16863d4ccf4ccc0800000000000000
-      internalID: -3691547872246341175
+      spriteID: 47fd77e8a5fdb9380800000000000000
+      internalID: -8963325053320568972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_19
+      name: g-baitenergy_19
       rect:
         serializedVersion: 2
         x: 130
@@ -641,19 +647,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a7be79b28e8faa8d0800000000000000
-      internalID: -2834179339428828294
+      spriteID: 41c6569fd8f61a3e0800000000000000
+      internalID: -2044230100284249068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_20
+      name: g-baitenergy_20
       rect:
         serializedVersion: 2
-        x: 231
+        x: 232
         y: 2
-        width: 12
+        width: 11
         height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -663,14 +669,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f140e3144e5dc18e0800000000000000
-      internalID: -1721265781238528993
+      spriteID: 27b77ddbefc644b00800000000000000
+      internalID: 811893674196040562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_21
+      name: g-baitenergy_21
       rect:
         serializedVersion: 2
         x: 242
@@ -685,19 +691,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99edb1dd8e8ea7bd0800000000000000
-      internalID: -2631534945404985703
+      spriteID: e42cbf98046f521f0800000000000000
+      internalID: -1070178579377307058
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_22
+      name: g-baitenergy_22
       rect:
         serializedVersion: 2
-        x: 258
+        x: 257
         y: 2
-        width: 27
+        width: 13
         height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -707,19 +713,63 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5be28d59ac0dfc1c0800000000000000
-      internalID: -4481133535694410059
+      spriteID: 729daae6d82ae6550800000000000000
+      internalID: 6156036468992825639
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bait or Energy_23
+      name: g-baitenergy_23
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 2
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5206492ad01b90470800000000000000
+      internalID: 8361408855310360613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-baitenergy_24
       rect:
         serializedVersion: 2
         x: 284
+        y: 3
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb2f611968633c0a0800000000000000
+      internalID: -6862581455594786117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-baitenergy_25
+      rect:
+        serializedVersion: 2
+        x: 294
         y: 2
-        width: 21
+        width: 11
         height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -729,8 +779,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c704ff88af2909470800000000000000
-      internalID: 8399374909783883900
+      spriteID: 671bd1e9706b9e7b0800000000000000
+      internalID: -5194420551361384074
       vertices: []
       indices: 
       edges: []
@@ -749,30 +799,32 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bait or Energy_0: 5539011032921111051
-      Bait or Energy_1: 6565902624180262056
-      Bait or Energy_10: -712057593108721210
-      Bait or Energy_11: -8238179858797401191
-      Bait or Energy_12: -9106967873825624149
-      Bait or Energy_13: -4192408763960899989
-      Bait or Energy_14: 5057083901738814672
-      Bait or Energy_15: 8908267925462470771
-      Bait or Energy_16: 7299604989083035929
-      Bait or Energy_17: 7291308566701117501
-      Bait or Energy_18: -3691547872246341175
-      Bait or Energy_19: -2834179339428828294
-      Bait or Energy_2: -7755936292392363120
-      Bait or Energy_20: -1721265781238528993
-      Bait or Energy_21: -2631534945404985703
-      Bait or Energy_22: -4481133535694410059
-      Bait or Energy_23: 8399374909783883900
-      Bait or Energy_3: 3358468856025643670
-      Bait or Energy_4: 6253435718195265783
-      Bait or Energy_5: -3454056023674394717
-      Bait or Energy_6: 7416955144969853119
-      Bait or Energy_7: 6307048578442144426
-      Bait or Energy_8: 3674793447312758563
-      Bait or Energy_9: 7768940859656464814
+      g-baitenergy_0: -5205091053488975964
+      g-baitenergy_1: -5068517862274792949
+      g-baitenergy_10: -5236096368497901375
+      g-baitenergy_11: -4070630182586968558
+      g-baitenergy_12: -1682016612814270618
+      g-baitenergy_13: -8235154490719962559
+      g-baitenergy_14: -4698738760573590937
+      g-baitenergy_15: -1307319751718974292
+      g-baitenergy_16: -4395353656301779474
+      g-baitenergy_17: 4890148636076910382
+      g-baitenergy_18: -8963325053320568972
+      g-baitenergy_19: -2044230100284249068
+      g-baitenergy_2: 2897800990235207600
+      g-baitenergy_20: 811893674196040562
+      g-baitenergy_21: -1070178579377307058
+      g-baitenergy_22: 6156036468992825639
+      g-baitenergy_23: 8361408855310360613
+      g-baitenergy_24: -6862581455594786117
+      g-baitenergy_25: -5194420551361384074
+      g-baitenergy_3: 4018186238852751476
+      g-baitenergy_4: -3956183481102155499
+      g-baitenergy_5: 2264794007652335665
+      g-baitenergy_6: 7317098260336005553
+      g-baitenergy_7: 4076462494492579261
+      g-baitenergy_8: 9068181334560816046
+      g-baitenergy_9: 7560228522422582073
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

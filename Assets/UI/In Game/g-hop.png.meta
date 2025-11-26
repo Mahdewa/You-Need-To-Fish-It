@@ -14,6 +14,48 @@ TextureImporter:
   - first:
       213: 8298449252865227331
     second: g-hop_3
+  - first:
+      213: -8220684762111625538
+    second: g-hop_4
+  - first:
+      213: -7451080214905295080
+    second: g-hop_5
+  - first:
+      213: 5629596363120296349
+    second: g-hop_6
+  - first:
+      213: 3226669235507550469
+    second: g-hop_7
+  - first:
+      213: 5108626045761082951
+    second: g-hop_8
+  - first:
+      213: 5405563146350307010
+    second: g-hop_9
+  - first:
+      213: 7110991981986423029
+    second: g-hop_10
+  - first:
+      213: 2670904246033587176
+    second: g-hop_11
+  - first:
+      213: 2971064121467521322
+    second: g-hop_12
+  - first:
+      213: -8846342014038731876
+    second: g-hop_13
+  - first:
+      213: 4185712595683619233
+    second: g-hop_14
+  - first:
+      213: -7734835354976681466
+    second: g-hop_15
+  - first:
+      213: -8609477804983067496
+    second: g-hop_16
+  - first:
+      213: 7205441828256207572
+    second: g-hop_17
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -154,7 +196,7 @@ TextureImporter:
         x: 0
         y: 0
         width: 60
-        height: 62
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,7 +216,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 73
-        y: 21
+        y: 40
         width: 20
         height: 28
       alignment: 0
@@ -196,7 +238,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 93
-        y: 21
+        y: 40
         width: 21
         height: 21
       alignment: 0
@@ -217,10 +259,10 @@ TextureImporter:
       name: g-hop_3
       rect:
         serializedVersion: 2
-        x: 114
-        y: 13
-        width: 20
-        height: 29
+        x: 112
+        y: 24
+        width: 22
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,6 +273,314 @@ TextureImporter:
       bones: []
       spriteID: 34a33afd0a30a2370800000000000000
       internalID: 8298449252865227331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_4
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 24
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb6bedf83c24aed80800000000000000
+      internalID: -8220684762111625538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_5
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 24
+        width: 25
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81fe0a5a502789890800000000000000
+      internalID: -7451080214905295080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_6
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 24
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d91cd9cb018502e40800000000000000
+      internalID: 5629596363120296349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_7
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 24
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 509db16f29e67cc20800000000000000
+      internalID: 3226669235507550469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_8
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 8
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 746d5eb625c75e640800000000000000
+      internalID: 5108626045761082951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_9
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 24
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c6272daa0b640b40800000000000000
+      internalID: 5405563146350307010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_10
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 8
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f0a3fe28815fa260800000000000000
+      internalID: 7110991981986423029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_11
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 24
+        width: 36
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eb1aedb245f01520800000000000000
+      internalID: 2670904246033587176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_12
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 8
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a29cafcb3175b3920800000000000000
+      internalID: 2971064121467521322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_13
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 8
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c939b93eeca7b3580800000000000000
+      internalID: -8846342014038731876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_14
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 8
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a1b99dcd63a61a30800000000000000
+      internalID: 4185712595683619233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_15
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 8
+        width: 47
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6028b7eb93858a490800000000000000
+      internalID: -7734835354976681466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_16
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 8
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89cdf542d8df48880800000000000000
+      internalID: -8609477804983067496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: g-hop_17
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 8
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d2d3feaa2fdef360800000000000000
+      internalID: 7205441828256207572
       vertices: []
       indices: 
       edges: []
@@ -251,8 +601,22 @@ TextureImporter:
     nameFileIdTable:
       g-hop_0: -7279527503752724564
       g-hop_1: -8713301556522640813
+      g-hop_10: 7110991981986423029
+      g-hop_11: 2670904246033587176
+      g-hop_12: 2971064121467521322
+      g-hop_13: -8846342014038731876
+      g-hop_14: 4185712595683619233
+      g-hop_15: -7734835354976681466
+      g-hop_16: -8609477804983067496
+      g-hop_17: 7205441828256207572
       g-hop_2: -4386557470211728159
       g-hop_3: 8298449252865227331
+      g-hop_4: -8220684762111625538
+      g-hop_5: -7451080214905295080
+      g-hop_6: 5629596363120296349
+      g-hop_7: 3226669235507550469
+      g-hop_8: 5108626045761082951
+      g-hop_9: 5405563146350307010
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -7,13 +7,16 @@ public class FishData {
     public string fishName;
     public FishSize sizeCategory; // Small, Medium, Big
     public Sprite fishIcon;       // Gambar ikan
-    [Range(0, 100)] public float rarityChance; // Persentase muncul (misal 60, 30, 10)
-    public bool isUnlocked;       // Status apakah sudah pernah ditangkap
+    [Range(0, 100)] public float rarityChance; 
+    public bool isUnlocked;       
 }
 
 public class CollectionManager : MonoBehaviour
 {
     public static CollectionManager instance;
+
+    // Referensi ke Player untuk nge-pause
+    private PlayerController playerController;
 
     void Awake() {
         if (instance == null) {
@@ -24,13 +27,12 @@ public class CollectionManager : MonoBehaviour
         }
     }
 
-    [Header("Database Ikan (Isi 9 Ikan di Inspector)")]
+    [Header("Database Ikan")]
     public FishData[] fishDatabase; 
-    // Urutan (Disarankan): 0-2 (Small), 3-5 (Medium), 6-8 (Big)
 
     [Header("UI Koleksi")]
     public GameObject collectionPanel;
-    public Image[] fishSlots; // 9 Slot Gambar di Panel
+    public Image[] fishSlots; 
     
     [Header("UI Statistik")]
     public TextMeshProUGUI smallCountText;
@@ -39,17 +41,35 @@ public class CollectionManager : MonoBehaviour
 
     void Start() {
         collectionPanel.SetActive(false);
+        
+        // Cari PlayerController di Scene saat mulai
+        playerController = FindObjectOfType<PlayerController>();
+        
         UpdateCollectionUI();
     }
 
-    // --- LOGIKA MEMBUKA KOLEKSI ---
+    // --- LOGIKA MEMBUKA KOLEKSI (DIPERBARUI) ---
     public void ToggleCollectionPanel() {
         bool isActive = collectionPanel.activeSelf;
-        collectionPanel.SetActive(!isActive);
+        
+        // Balik statusnya (jika aktif jadi mati, jika mati jadi aktif)
+        bool newStatus = !isActive;
+        
+        collectionPanel.SetActive(newStatus);
 
-        if (!isActive) {
-            // Saat dibuka, update tampilannya
+        // Update visual jika dibuka
+        if (newStatus) {
             UpdateCollectionUI();
+        }
+
+        // --- PAUSE / UNPAUSE PLAYER ---
+        // Jika newStatus == true (Panel Buka), maka Game Pause
+        if (playerController == null) {
+            playerController = FindObjectOfType<PlayerController>();
+        }
+
+        if (playerController != null) {
+            playerController.SetUIState(newStatus);
         }
     }
 
@@ -58,19 +78,17 @@ public class CollectionManager : MonoBehaviour
         // 1. Update Slot Gambar
         for (int i = 0; i < fishDatabase.Length; i++) {
             if (i < fishSlots.Length) {
-                // Set Sprite
                 fishSlots[i].sprite = fishDatabase[i].fishIcon;
 
-                // Atur Warna: Putih (Normal) jika unlocked, Hitam/Gelap jika belum
                 if (fishDatabase[i].isUnlocked) {
                     fishSlots[i].color = Color.white; 
                 } else {
-                    fishSlots[i].color = Color.black; // Atau color gelap transparan
+                    fishSlots[i].color = Color.black; 
                 }
             }
         }
 
-        // 2. Update Text Jumlah (Ambil dari Inventory)
+        // 2. Update Text Jumlah
         if (InventorySystem.instance != null) {
             if (smallCountText != null) 
                 smallCountText.text = "" + InventorySystem.instance.smallFishCount;
@@ -84,12 +102,7 @@ public class CollectionManager : MonoBehaviour
     }
 
     // --- LOGIKA MENDAPATKAN IKAN ---
-    
-    // Fungsi ini dipanggil PlayerController untuk menentukan ikan spesifik apa yang didapat
     public FishData GetRandomFish(FishSize size) {
-        // Filter database berdasarkan ukuran
-        // Asumsi urutan array: 0-2 Small, 3-5 Medium, 6-8 Big
-        
         int startIndex = 0;
         int endIndex = 0;
 
@@ -99,11 +112,9 @@ public class CollectionManager : MonoBehaviour
             case FishSize.Big: startIndex = 6; endIndex = 8; break;
         }
 
-        // Roll Random (0 - 100)
         float roll = Random.Range(0f, 100f);
         float cumulative = 0f;
 
-        // Loop di kategori tersebut untuk cek rarity
         for (int i = startIndex; i <= endIndex; i++) {
             cumulative += fishDatabase[i].rarityChance;
             if (roll <= cumulative) {
@@ -111,20 +122,18 @@ public class CollectionManager : MonoBehaviour
             }
         }
         
-        // Fallback (kembalikan yang pertama di kategori itu jika hitungan meleset)
         return fishDatabase[startIndex];
     }
 
-    // Fungsi untuk Unlock (Return true jika ini ikan BARU)
     public bool UnlockFish(string name) {
         foreach (var fish in fishDatabase) {
             if (fish.fishName == name) {
                 if (!fish.isUnlocked) {
                     fish.isUnlocked = true;
-                    UpdateCollectionUI(); // Refresh jika panel sedang terbuka
-                    return true; // "NEW FISH!"
+                    UpdateCollectionUI(); 
+                    return true; 
                 }
-                return false; // Sudah pernah punya
+                return false; 
             }
         }
         return false;

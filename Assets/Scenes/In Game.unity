@@ -2776,14 +2776,15 @@ MonoBehaviour:
   boatSeatPosition: {fileID: 1014387299}
   playerLandPosition: {fileID: 163053680}
   boatStartPosition: {fileID: 1039788987}
-  fishingWaitTime: 3
+  isUIOpen: 0
+  fishingWaitTime: 4
   fishingEnergyCostDock: 10
-  fishingEnergyCostSea: 25
+  fishingEnergyCostSea: 20
   bridgeFishingSuccessChance: 0.7
   seaFishingSuccessChance: 0.9
   mashUIContainer: {fileID: 1602563893}
   mashProgressBar: {fileID: 919375326}
-  mashIncreaseAmount: 0.15
+  mashIncreaseAmount: 0.1
   mashDecaySpeed: 0.3
   smallFishDecay: 0.1
   mediumFishDecay: 0.25
@@ -2796,7 +2797,7 @@ MonoBehaviour:
   smallBoatPrice: 100
   bigBoatPrice: 500
   baitPrice: 10
-  energyFoodPrice: 20
+  energyFoodPrice: 50
   energyFoodRestoreAmount: 30
   runningSfxInterval: 0.38
 --- !u!61 &421088967
@@ -3985,6 +3986,7 @@ MonoBehaviour:
   targetFishToday: 0
   currentSoldToday: 0
   isMissionComplete: 0
+  isFreeMode: 0
   missionText: {fileID: 1567688899}
 --- !u!1 &669827345
 GameObject:
@@ -4903,7 +4905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5e7be52ea0e724ba86fc7b1be4f70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultPrompt: {fileID: 21300000, guid: c47bc219125fc764abac70ebe41d6a9e, type: 3}
+  defaultPrompt: {fileID: 21300000, guid: e4dc94e7ba951c54f97f29a42718b982, type: 3}
   boatPurchasePrompt: {fileID: 0}
   shipPurchasePrompt: {fileID: 0}
 --- !u!1 &906295606
@@ -5228,7 +5230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3635b677d824154981e9dff95ae292b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baitCount: 5
+  baitCount: 0
   smallFishCount: 0
   mediumFishCount: 0
   bigFishCount: 0
@@ -5236,8 +5238,8 @@ MonoBehaviour:
   hasSmallBoat: 0
   ownsBigBoat: 0
   smallFishPrice: 10
-  mediumFishPrice: 30
-  bigFishPrice: 100
+  mediumFishPrice: 25
+  bigFishPrice: 50
   baitText: {fileID: 79155826}
   moneyText: {fileID: 1811938527}
   rawFishText: {fileID: 2007880141}
