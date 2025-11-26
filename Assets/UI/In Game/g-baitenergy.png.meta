@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: 6568644c7bff3a44ea006b749763493e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5539011032921111051
+    second: Bait or Energy_0
+  - first:
+      213: 6565902624180262056
+    second: Bait or Energy_1
+  - first:
+      213: -7755936292392363120
+    second: Bait or Energy_2
+  - first:
+      213: 3358468856025643670
+    second: Bait or Energy_3
+  - first:
+      213: 6253435718195265783
+    second: Bait or Energy_4
+  - first:
+      213: -3454056023674394717
+    second: Bait or Energy_5
+  - first:
+      213: 7416955144969853119
+    second: Bait or Energy_6
+  - first:
+      213: 6307048578442144426
+    second: Bait or Energy_7
+  - first:
+      213: 3674793447312758563
+    second: Bait or Energy_8
+  - first:
+      213: 7768940859656464814
+    second: Bait or Energy_9
+  - first:
+      213: -712057593108721210
+    second: Bait or Energy_10
+  - first:
+      213: -8238179858797401191
+    second: Bait or Energy_11
+  - first:
+      213: -9106967873825624149
+    second: Bait or Energy_12
+  - first:
+      213: -4192408763960899989
+    second: Bait or Energy_13
+  - first:
+      213: 5057083901738814672
+    second: Bait or Energy_14
+  - first:
+      213: 8908267925462470771
+    second: Bait or Energy_15
+  - first:
+      213: 7299604989083035929
+    second: Bait or Energy_16
+  - first:
+      213: 7291308566701117501
+    second: Bait or Energy_17
+  - first:
+      213: -3691547872246341175
+    second: Bait or Energy_18
+  - first:
+      213: -2834179339428828294
+    second: Bait or Energy_19
+  - first:
+      213: -1721265781238528993
+    second: Bait or Energy_20
+  - first:
+      213: -2631534945404985703
+    second: Bait or Energy_21
+  - first:
+      213: -4481133535694410059
+    second: Bait or Energy_22
+  - first:
+      213: 8399374909783883900
+    second: Bait or Energy_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bait or Energy_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 60
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0a7b3000358edc40800000000000000
+      internalID: 5539011032921111051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_1
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 22
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a4d11826a5ce1b50800000000000000
+      internalID: 6565902624180262056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_2
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 21
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09b9467e8016d5490800000000000000
+      internalID: -7755936292392363120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_3
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 42
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69afe9071adab9e20800000000000000
+      internalID: 3358468856025643670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_4
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 21
+        width: 7
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f0c4c057aaa8c650800000000000000
+      internalID: 6253435718195265783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_5
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 22
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a7e69ac85ab010d0800000000000000
+      internalID: -3454056023674394717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_6
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 21
+        width: 14
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb81fea58615ee660800000000000000
+      internalID: 7416955144969853119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_7
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 0
+        width: 61
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaa2d231443278750800000000000000
+      internalID: 6307048578442144426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_8
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 21
+        width: 19
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3279202ab2d7ff230800000000000000
+      internalID: 3674793447312758563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_9
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 22
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea967dcdc82d0db60800000000000000
+      internalID: 7768940859656464814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_10
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 21
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1922744634e16f0800000000000000
+      internalID: -712057593108721210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_11
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 21
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99b6a90f01b1cad80800000000000000
+      internalID: -8238179858797401191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_12
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 13
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bafaab338fc8d9180800000000000000
+      internalID: -9106967873825624149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_13
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 14
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6640e6017291d5c0800000000000000
+      internalID: -4192408763960899989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_14
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 2
+        width: 8
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dc0d7ad30f5e2640800000000000000
+      internalID: 5057083901738814672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_15
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 3
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 370523dea7680ab70800000000000000
+      internalID: 8908267925462470771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_16
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 2
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 919a6f600186d4560800000000000000
+      internalID: 7299604989083035929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_17
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 2
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d309bf9a28eef2560800000000000000
+      internalID: 7291308566701117501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_18
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 3
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c16863d4ccf4ccc0800000000000000
+      internalID: -3691547872246341175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_19
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 2
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7be79b28e8faa8d0800000000000000
+      internalID: -2834179339428828294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_20
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 2
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f140e3144e5dc18e0800000000000000
+      internalID: -1721265781238528993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_21
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 3
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99edb1dd8e8ea7bd0800000000000000
+      internalID: -2631534945404985703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_22
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 2
+        width: 27
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5be28d59ac0dfc1c0800000000000000
+      internalID: -4481133535694410059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bait or Energy_23
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 2
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c704ff88af2909470800000000000000
+      internalID: 8399374909783883900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Bait or Energy_0: 5539011032921111051
+      Bait or Energy_1: 6565902624180262056
+      Bait or Energy_10: -712057593108721210
+      Bait or Energy_11: -8238179858797401191
+      Bait or Energy_12: -9106967873825624149
+      Bait or Energy_13: -4192408763960899989
+      Bait or Energy_14: 5057083901738814672
+      Bait or Energy_15: 8908267925462470771
+      Bait or Energy_16: 7299604989083035929
+      Bait or Energy_17: 7291308566701117501
+      Bait or Energy_18: -3691547872246341175
+      Bait or Energy_19: -2834179339428828294
+      Bait or Energy_2: -7755936292392363120
+      Bait or Energy_20: -1721265781238528993
+      Bait or Energy_21: -2631534945404985703
+      Bait or Energy_22: -4481133535694410059
+      Bait or Energy_23: 8399374909783883900
+      Bait or Energy_3: 3358468856025643670
+      Bait or Energy_4: 6253435718195265783
+      Bait or Energy_5: -3454056023674394717
+      Bait or Energy_6: 7416955144969853119
+      Bait or Energy_7: 6307048578442144426
+      Bait or Energy_8: 3674793447312758563
+      Bait or Energy_9: 7768940859656464814
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

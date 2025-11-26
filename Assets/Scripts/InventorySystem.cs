@@ -1,6 +1,9 @@
 using UnityEngine;
 using TMPro;
 
+// Kita definisikan tipe ikan di sini agar bisa diakses semua script
+public enum FishSize { Small, Medium, Big }
+
 public class InventorySystem : MonoBehaviour {
     public static InventorySystem instance;
 
@@ -15,84 +18,120 @@ public class InventorySystem : MonoBehaviour {
 
     // --- Data Inventory ---
     public int baitCount = 5;
-    public int rawFishCount = 0;
+    
+    // Variabel Spesifik per ukuran
+    public int smallFishCount = 0;
+    public int mediumFishCount = 0;
+    public int bigFishCount = 0;
+    
     public int money = 0;
     public bool hasSmallBoat = false;
     public bool ownsBigBoat = false;
 
-    [Header("Referensi UI")]
+    // --- Harga Jual Ikan ---
+    [Header("Harga Jual Ikan")]
+    public int smallFishPrice = 10;
+    public int mediumFishPrice = 30;
+    public int bigFishPrice = 100;
+
+    [Header("Referensi UI (Utama)")]
     public TextMeshProUGUI baitText;
-    public TextMeshProUGUI rawFishText;
     public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI rawFishText; // Menampilkan TOTAL ikan
+
+    [Header("Referensi UI (Detail - Opsional)")]
+    // Masukkan Text UI ke sini jika ingin menampilkan jumlah spesifik di layar
+    public TextMeshProUGUI smallFishText;
+    public TextMeshProUGUI mediumFishText;
+    public TextMeshProUGUI bigFishText;
 
     void Start() {
         UpdateInventoryUI();
     }
 
-    public void LoadInventory(int loadedMoney, int loadedRawFishCount, int loadedBaitCount, bool loadedSmallBoat, bool loadedBigBoat)
+    public void LoadInventory(int lMoney, int sFish, int mFish, int bFish, int lBait, bool lSmallBoat, bool lBigBoat)
     {
-        money = loadedMoney;
-        rawFishCount = loadedRawFishCount;
-        baitCount = loadedBaitCount;
-        hasSmallBoat = loadedSmallBoat;
-        ownsBigBoat = loadedBigBoat;
-
-        // Update UI setelah me-load
+        money = lMoney;
+        smallFishCount = sFish;
+        mediumFishCount = mFish;
+        bigFishCount = bFish;
+        baitCount = lBait;
+        hasSmallBoat = lSmallBoat;
+        ownsBigBoat = lBigBoat;
         UpdateInventoryUI();
     }
 
+    // --- FUNGSI UPDATE UI (DIPERBARUI) ---
     public void UpdateInventoryUI() {
-        if (baitText != null) 
-            baitText.text = baitCount.ToString();
-            
-        if (rawFishText != null)
-            rawFishText.text = rawFishCount.ToString();
-            
-        if (moneyText != null)
-            moneyText.text = money.ToString();
+        // 1. Update Umpan & Uang
+        if (baitText != null) baitText.text = baitCount.ToString();
+        if (moneyText != null) moneyText.text = money.ToString();
+
+        // 2. Update Total Ikan
+        int totalFish = smallFishCount + mediumFishCount + bigFishCount;
+        if (rawFishText != null) {
+            rawFishText.text = totalFish.ToString();
+        }
+
+        // 3. Update Detail Ikan (Jika UI-nya dipasang)
+        if (smallFishText != null) smallFishText.text = smallFishCount.ToString();
+        if (mediumFishText != null) mediumFishText.text = mediumFishCount.ToString();
+        if (bigFishText != null) bigFishText.text = bigFishCount.ToString();
     }
 
-    // --- Fungsi untuk UMPAN ---
+    // --- Fungsi UMPAN ---
     public bool HasBait(int amount) {
         return baitCount >= amount;
     }
 
     public void AddBait(int amount) {
         baitCount += amount;
-        Debug.Log($"Dapat {amount} Umpan! Total: {baitCount}");
         UpdateInventoryUI();
     }
 
     public void UseBait(int amount) {
         baitCount -= amount;
         if (baitCount < 0) baitCount = 0;
-        Debug.Log($"Pakai {amount} Umpan. Sisa: {baitCount}");
         UpdateInventoryUI();
     }
 
-    // --- Fungsi untuk IKAN ---
-    public void AddRawFish(int amount) {
-        rawFishCount += amount;
-        Debug.Log($"Dapat {amount} Ikan Mentah! Total: {rawFishCount}");
-        UpdateInventoryUI();
-    }
-
-    public bool HasRawFish(int amount) {
-        return rawFishCount >= amount;
-    }
-
-    public void UseRawFish(int amount) {
-        if (HasRawFish(amount)) {
-            rawFishCount -= amount;
-            Debug.Log($"Menjual {amount} ikan. Sisa ikan mentah: {rawFishCount}");
-            UpdateInventoryUI();
+    // --- Fungsi IKAN ---
+    public void AddFish(FishSize size, int amount) {
+        switch (size) {
+            case FishSize.Small: smallFishCount += amount; break;
+            case FishSize.Medium: mediumFishCount += amount; break;
+            case FishSize.Big: bigFishCount += amount; break;
         }
+        UpdateInventoryUI(); // Refresh UI
     }
 
-    // --- FUNGSI UNTUK UANG ---
+    public int SellAllFish() {
+        int totalEarnings = 0;
+
+        if (smallFishCount > 0) {
+            totalEarnings += (smallFishCount * smallFishPrice);
+            smallFishCount = 0;
+        }
+        if (mediumFishCount > 0) {
+            totalEarnings += (mediumFishCount * mediumFishPrice);
+            mediumFishCount = 0;
+        }
+        if (bigFishCount > 0) {
+            totalEarnings += (bigFishCount * bigFishPrice);
+            bigFishCount = 0;
+        }
+
+        if (totalEarnings > 0) {
+            AddMoney(totalEarnings);
+        }
+        
+        UpdateInventoryUI(); // Refresh UI setelah jual
+        return totalEarnings;
+    }
+
+    // --- Fungsi UANG ---
     public void AddMoney(int amount) {
         money += amount;
-        Debug.Log($"Dapat {amount} uang. Total Uang: {money}");
         UpdateInventoryUI();
     }
 
@@ -101,10 +140,8 @@ public class InventorySystem : MonoBehaviour {
     }
 
     public void SpendMoney(int amount) {
-        if (HasMoney(amount))
-        {
+        if (HasMoney(amount)) {
             money -= amount;
-            Debug.Log($"Membelanjakan {amount} uang. Sisa Uang: {money}");
             UpdateInventoryUI();
         }
     }
@@ -114,9 +151,11 @@ public class InventorySystem : MonoBehaviour {
             SpendMoney(price);
             return true;
         }
-        else {
-            Debug.Log($"Uang tidak cukup! Butuh {price}, kamu punya {money}");
-            return false;
-        }
+        return false;
+    }
+
+    public int GetTotalFishCount()
+    {
+        return smallFishCount + mediumFishCount + bigFishCount;
     }
 }

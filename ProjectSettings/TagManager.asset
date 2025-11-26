@@ -12,6 +12,7 @@ TagManager:
   - Campfire
   - NPC
   - BigBoatDock
+  - ShopZone
   layers:
   - Default
   - TransparentFX

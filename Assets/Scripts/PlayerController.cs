@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -33,10 +34,21 @@ public class PlayerController : MonoBehaviour
     // --- Variabel Sistem Memancing ---
     [Header("Sistem Memancing")]
     public float fishingWaitTime = 3.0f; 
-    public float reelingDuration = 4.0f; 
-    public float fishingEnergyCost = 10f;
-    public float bridgeFishingSuccessChance = 0.5f; // 30%
-    public float seaFishingSuccessChance = 0.8f; // 30%
+    public float fishingEnergyCostDock = 10f; // Biaya di Dermaga (Murah)
+    public float fishingEnergyCostSea = 25f;  // Biaya di Laut (Mahal)
+    public float bridgeFishingSuccessChance = 0.5f; 
+    public float seaFishingSuccessChance = 0.8f;
+
+    [Header("Sistem Mash Button (UI)")]
+    public GameObject mashUIContainer;   // Masukkan GameObject 'BarBackground' atau Canvas-nya di sini
+    public Image mashProgressBar;        // Masukkan Image 'BarFill' di sini
+    public float mashIncreaseAmount = 0.15f; // Berapa banyak bar nambah saat diklik (0.15 = 15%)
+    public float mashDecaySpeed = 0.3f;
+
+    [Header("Kesulitan Ikan (Decay Speed)")]
+    public float smallFishDecay = 0.1f;  // Mudah
+    public float mediumFishDecay = 0.25f; // Sedang
+    public float bigFishDecay = 0.45f;    // Susah (Cepat turunnya)
 
     // --- Variabel Sistem Bait ---
     [Header("Sistem Bait")]
@@ -53,6 +65,12 @@ public class PlayerController : MonoBehaviour
     public int rawFishPrice = 10;
     public int smallBoatPrice = 100; // Sesuai permintaan Anda
     public int bigBoatPrice = 1000;  // Objektif utama
+
+    [Header("Sistem Toko")]
+    public int baitPrice = 10;
+    public int energyFoodPrice = 20;
+    public float energyFoodRestoreAmount = 30f; // Berapa banyak energi yang dipulihkan
+    private bool isInShopZone = false;
     
     // --- RUNNING SFX ---
     [Header("Running SFX")]
@@ -79,6 +97,21 @@ public class PlayerController : MonoBehaviour
     {
         if (currentFishingState != FishingState.None) return;
         if (isBusy) return;
+
+        if (isInShopZone)
+        {
+            // Tombol Q untuk Beli Umpan
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                BuyBaitFromShop();
+            }
+            // Tombol E untuk Beli Makanan (Energi)
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                BuyFoodFromShop();
+            }
+        }
+
         // --- Sistem Kapal ---
         if (isAtBigBoatDock && Input.GetKeyDown(KeyCode.E)) {
             if (InventorySystem.instance.ownsBigBoat) {
@@ -248,23 +281,44 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+private FishSize DetermineFishSize() {
+        float roll = Random.value; // Angka acak 0.0 sampai 1.0
+
+        if (isOnBoat) {
+            // --- LAUTAN (Boat) ---
+            // 40% Besar, 40% Sedang, 20% Kecil
+            if (roll <= 0.4f) return FishSize.Big;       // 0 - 0.4 (40%)
+            else if (roll <= 0.8f) return FishSize.Medium; // 0.4 - 0.8 (40%)
+            else return FishSize.Small;                    // 0.8 - 1.0 (20%)
+        } 
+        else {
+            // --- PELABUHAN/JEMBATAN (Land) ---
+            // 10% Besar, 30% Sedang, 60% Kecil
+            if (roll <= 0.1f) return FishSize.Big;         // 0 - 0.1 (10%)
+            else if (roll <= 0.4f) return FishSize.Medium; // 0.1 - 0.4 (30%)
+            else return FishSize.Small;                    // 0.4 - 1.0 (60%)
+        }
+    }
+
+
     // --- Fungsi BARU: Jual Ikan ---
-    private void SellAllRawFish() {
-        int fishToSell = InventorySystem.instance.rawFishCount;
+private void SellAllRawFish() {
+        // 1. Hitung dulu berapa jumlah ikan yang akan dijual
+        int totalFishToSell = InventorySystem.instance.GetTotalFishCount();
+
+        // 2. Jual (Dapatkan Uang)
+        int moneyEarned = InventorySystem.instance.SellAllFish();
         
-        if (fishToSell > 0) {
-            // 1. Hapus ikan dari inventory
-            InventorySystem.instance.UseRawFish(fishToSell);
+        if (moneyEarned > 0) {
+            UIManager.instance.ShowPlayerBubble($"SOLD FOR ${moneyEarned}!");
+            AudioManager.Instance.PlaySFX("button");
             
-            // 2. Hitung total pendapatan
-            int moneyEarned = fishToSell * rawFishPrice;
-            
-            // 3. Tambahkan uang
-            InventorySystem.instance.AddMoney(moneyEarned);
-            
-            UIManager.instance.ShowPlayerBubble("MONEY!");
+            // 3. LAPOR KE DAILY MISSION (PENTING!)
+            if (DailyMissionManager.instance != null) {
+                DailyMissionManager.instance.AddProgress(totalFishToSell);
+            }
         } else {
-            UIManager.instance.ShowPlayerBubble("NOTHING TO SELL");
+            UIManager.instance.ShowPlayerBubble("NO FISH TO SELL");
         }
     }
 
@@ -300,27 +354,91 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // --- FUNGSI BARU: BELI DI TOKO ---
+    private void BuyBaitFromShop()
+    {
+        if (InventorySystem.instance.money >= baitPrice)
+        {
+            InventorySystem.instance.SpendMoney(baitPrice);
+            InventorySystem.instance.AddBait(1);
+            AudioManager.Instance.PlaySFX("button"); // Atau SFX 'buy'
+            UIManager.instance.ShowPlayerBubble("BAIT +1");
+        }
+        else
+        {
+            UIManager.instance.ShowPlayerBubble("NO MONEY!");
+            AudioManager.Instance.PlaySFX("mancing-gagal"); // Sound error
+        }
+    }
+
+    private void BuyFoodFromShop()
+    {
+        // Cek apakah energi sudah penuh? (Opsional, kalau mau boros boleh aja beli terus hehe)
+        if (EnergySystem.instance.currentEnergy >= EnergySystem.instance.maxEnergy)
+        {
+            UIManager.instance.ShowPlayerBubble("I'M FULL!");
+            return;
+        }
+
+        if (InventorySystem.instance.money >= energyFoodPrice)
+        {
+            InventorySystem.instance.SpendMoney(energyFoodPrice);
+            
+            // Panggil fungsi AddEnergy (Pastikan EnergySystem punya ini)
+            EnergySystem.instance.AddEnergy(energyFoodRestoreAmount);
+            
+            AudioManager.Instance.PlaySFX("button"); // Atau SFX 'eat'
+            UIManager.instance.ShowPlayerBubble("DELICIOUS!");
+        }
+        else
+        {
+            UIManager.instance.ShowPlayerBubble("NO MONEY!");
+            AudioManager.Instance.PlaySFX("mancing-gagal");
+        }
+    }
+
     // --- Coroutine BARU: Istirahat ---
+// --- Coroutine BARU: Istirahat ---
     private IEnumerator RestSequence()
     {
-        isBusy = true; // Player sibuk, tidak bisa bergerak
-        playerAnimator.PlayIdle(); // Ensure idle animation during rest
-        
-        // Tampilkan resting image
-        UIManager.instance.ShowRestingImage();
+        // 1. CEK DULU: APAKAH MISI SUDAH SELESAI?
+        if (DailyMissionManager.instance != null)
+        {
+            if (!DailyMissionManager.instance.CanSleep())
+            {
+                UIManager.instance.ShowPlayerBubble("I HAVEN'T FINISHED MY JOB..."); 
+                yield return new WaitForSeconds(1f); // Jeda sebentar
+                yield break; // Game Over akan dipanggil oleh Manager
+            }
+        }
 
-        // Mensimulasikan waktu istirahat
+        // --- Kalau Misi Selesai, Lanjut Tidur ---
+        isBusy = true; 
+        playerAnimator.PlayIdle(); 
+        
+        UIManager.instance.ShowRestingImage();
         yield return new WaitForSeconds(restTime);
 
-        // Panggil fungsi dari EnergySystem
         EnergySystem.instance.RestoreAllEnergy();
-        
-        // Sembunyikan resting image
         UIManager.instance.HideRestingImage();
-
+        
+        // Pindah Hari
         TimeSystem.instance.PassDay();
 
-        isBusy = false; // Selesai, player bisa gerak lagi
+        // 2. SIAPKAN MISI UNTUK BESOK (RESET MISI)
+        if (DailyMissionManager.instance != null) {
+            int newDay = TimeSystem.instance.GetCurrentDay();
+            DailyMissionManager.instance.StartNewDayMission(newDay);
+        }
+        
+        // >>> 3. AUTO-SAVE (INI PERBAIKANNYA!) <<<
+        // Simpan data tepat setelah bangun tidur (Hari Baru + Misi Baru)
+        if (SaveSystem.instance != null) {
+            SaveSystem.instance.SaveGameData();
+            Debug.Log("Auto-Save: Data hari baru tersimpan!");
+        }
+
+        isBusy = false; 
     }
 
     // --- Coroutine MENCARI UMPAN (PERUBAHAN BESAR DI SINI) ---
@@ -406,117 +524,148 @@ public class PlayerController : MonoBehaviour
     }
 
     // --- Coroutine Memancing ---
+// --- COROUTINE MEMANCING (DENGAN TIPE IKAN) ---
     private IEnumerator StartFishingSequence() {
+// 1. TENTUKAN BIAYA ENERGI
+        // Jika isOnBoat (di perahu) pakai harga Sea, jika tidak pakai harga Dock
+        float currentEnergyCost = isOnBoat ? fishingEnergyCostSea : fishingEnergyCostDock;
+
+        // 2. CEK KETERSEDIAAN SUMBER DAYA
         if (!InventorySystem.instance.HasBait(1)) {
             UIManager.instance.ShowPlayerBubble("NO BAIT");
             yield break;
         }
-        if (!EnergySystem.instance.HasEnoughEnergy(fishingEnergyCost)) {
-            UIManager.instance.ShowPlayerBubble("I'M TIRED");
+
+        // Cek energi menggunakan biaya yang sudah ditentukan tadi
+        if (!EnergySystem.instance.HasEnoughEnergy(currentEnergyCost)) {
+            UIManager.instance.ShowPlayerBubble("I'M TIRED"); // Atau "TOO TIRED FOR SEA"
             yield break;
         }
         
-        // Kurangi resource
+        // 3. GUNAKAN SUMBER DAYA
         InventorySystem.instance.UseBait(1);
-        EnergySystem.instance.UseEnergy(fishingEnergyCost);
-        
-        isBusy = true; // TAMBAH INI - Lock semua input saat fishing
+        EnergySystem.instance.UseEnergy(currentEnergyCost); // Kurangi sesuai lokasi
+        isBusy = true; 
         currentFishingState = FishingState.Casting;
-        playerAnimator.PlayFishingStart(); // Trigger fishing start animation
+        playerAnimator.PlayFishingStart(); 
         AudioManager.Instance.PlaySFX("mancing-awal");
         UIManager.instance.ShowPlayerBubble("THROWING..."); 
         yield return new WaitForSeconds(0.5f); 
 
         currentFishingState = FishingState.Waiting;
-        playerAnimator.PlayFishingWaiting(); // Trigger fishing waiting animation
+        playerAnimator.PlayFishingWaiting(); 
         UIManager.instance.ShowPlayerBubble("...");
         yield return new WaitForSeconds(fishingWaitTime); 
 
+        // --- PHASE 1: HOOKED ---
         currentFishingState = FishingState.Hooked;
         AudioManager.Instance.PlaySFX("button");
         CameraShake.Shake(duration: 0.3f, magnitude: 0.1f);
-        UIManager.instance.ShowPlayerBubble("!");
-
-        float hookTimer = 0f;
-        bool playerReacted = false;
-        while (hookTimer < reelingDuration) {
-            if (Input.GetMouseButtonDown(0)) {
-                playerReacted = true;
-                break;
-            }
-            hookTimer += Time.deltaTime;
-            yield return null; 
-        }
         
-        if (!playerReacted) {
-            UIManager.instance.ShowPlayerBubble("WHAT THE...");
-            playerAnimator.PlayFishingEnd(); // End fishing animation
-            isBusy = false; // TAMBAH INI - unlock player
+        // >>> 1. TENTUKAN IKAN APA YANG MAKAN UMPAN <<<
+        FishSize hookedFish = DetermineFishSize();
+        
+        // Beri petunjuk visual teks beda (Opsional, biar misterius bisa pakai "!" saja)
+        if (hookedFish == FishSize.Big) UIManager.instance.ShowPlayerBubble("!!! HEAVY !!!");
+        else UIManager.instance.ShowPlayerBubble("!");
+
+        float reactionTimer = 1.0f; 
+        bool hookSuccess = false;
+        while (reactionTimer > 0) {
+            if (Input.GetMouseButtonDown(0)) { hookSuccess = true; break; }
+            reactionTimer -= Time.deltaTime;
+            yield return null;
+        }
+
+        if (!hookSuccess) {
+            UIManager.instance.ShowPlayerBubble("TOO SLOW...");
+            playerAnimator.PlayFishingEnd(); 
+            isBusy = false; 
             currentFishingState = FishingState.None; 
             yield break; 
         }
 
+        // --- PHASE 2: REELING (MASH BUTTON) ---
         currentFishingState = FishingState.Reeling;
-        playerAnimator.PlayFishingEnd(); // Trigger fishing end/reeling animation
-        UIManager.instance.ShowPlayerBubble("PULL UP!");
+        playerAnimator.PlayFishingEnd(); 
+        UIManager.instance.ShowPlayerBubble("MASH CLICK!!"); 
         
-        // Mainkan reeling SFX dalam loop selama reelingDuration
-        float reelingTimer = 0f;
-        float reelingDurationRemaining = reelingDuration - hookTimer;
-        float reelingFxInterval = 0.5f; // Interval untuk play reeling SFX
-        float reelingFxTimer = 0f;
+        if (mashUIContainer != null) mashUIContainer.SetActive(true);
         
-        while (reelingTimer < reelingDurationRemaining) {
-            reelingTimer += Time.deltaTime;
-            reelingFxTimer += Time.deltaTime;
+        // >>> 2. ATUR KESULITAN BERDASARKAN IKAN <<<
+        float currentDecay = 0f;
+        switch (hookedFish) {
+            case FishSize.Small: currentDecay = smallFishDecay; break;
+            case FishSize.Medium: currentDecay = mediumFishDecay; break;
+            case FishSize.Big: currentDecay = bigFishDecay; break;
+        }
+
+        float currentProgress = 0.3f; 
+        bool fishCaught = false;
+        bool fishLost = false;
+
+        while (!fishCaught && !fishLost) {
+            // Gunakan currentDecay yang sudah dipilih tadi
+            currentProgress -= currentDecay * Time.deltaTime;
+
+            if (Input.GetMouseButtonDown(0)) {
+                currentProgress += mashIncreaseAmount;
+                CameraShake.Shake(duration: 0.1f, magnitude: 0.05f); 
+            }
+
+            if (mashProgressBar != null) mashProgressBar.fillAmount = currentProgress;
+
+            if (currentProgress >= 1.0f) fishCaught = true;
+            else if (currentProgress <= 0.0f) fishLost = true;
+
+            yield return null; 
+        }
+
+        if (mashUIContainer != null) mashUIContainer.SetActive(false);
+
+        // --- PHASE 3: HASIL ---
+        if (fishCaught) {
+            AudioManager.Instance.PlaySFX("mancing-berhasil");
             
-            // Mainkan SFX setiap interval
-            if (reelingFxTimer >= reelingFxInterval) {
-                CameraShake.Shake(duration: 0.3f, magnitude: 0.1f);
-                AudioManager.Instance.PlaySFX("mancing-reeling");
-                reelingFxTimer = 0f;
+            // 1. Simpan ke Inventory (Logic Lama)
+            InventorySystem.instance.AddFish(hookedFish, 1);
+            
+            // 2. LOGIC BARU: Tentukan Spesies Ikan & Cek Koleksi
+            if (CollectionManager.instance != null) {
+                // Minta ikan spesifik dari database
+                FishData caughtFish = CollectionManager.instance.GetRandomFish(hookedFish);
+                
+                // Coba unlock
+                bool isNewDiscovery = CollectionManager.instance.UnlockFish(caughtFish.fishName);
+
+                // 3. Tampilkan Notifikasi
+                if (isNewDiscovery) {
+                    UIManager.instance.ShowPlayerBubble($"YEAYY, NEW FISH XD");
+                    // Play SFX Spesial jika ada (optional)
+                } 
+                else {
+                    // Chat biasa
+                    UIManager.instance.ShowPlayerBubble($"GOT A {caughtFish.fishName}!");
+                }
+            }
+            else {
+                // Fallback jika CollectionManager lupa dipasang
+                UIManager.instance.ShowPlayerBubble("GOT A FISH!");
             }
             
-            yield return null;
-        }
-
-        // Force stop SFX reeling setelah durasi habis
-        AudioManager.Instance.StopSFX();
-
-        currentFishingState = FishingState.Result;
-        
-        float currentChance;
-        if (isOnBoat) {
-            // Player ada di perahu -> pakai chance LAUT
-            currentChance = seaFishingSuccessChance;
-            // UIManager.instance.ShowNotification($"FISHING AT SEA... (CHANCE: {currentChance * 100}%)");
-        } else {
-            // Player di darat (jembatan) -> pakai chance JEMBATAN
-            currentChance = bridgeFishingSuccessChance;
-            // UIManager.instance.ShowNotification($"MEMANCING AT BRIDGE... (CHANCE: {currentChance * 100}%)");
-        }
-
-        // 2. Gunakan 'currentChance' untuk menentukan hasil
-        if (Random.value <= currentChance) { 
-            AudioManager.Instance.PlaySFX("mancing-berhasil");
-            UIManager.instance.ShowPlayerBubble("GOT A FISH!");
-            InventorySystem.instance.AddRawFish(1);
-            
-            // Trigger camera shake saat berhasil dapat ikan
             CameraShake.Shake(duration: 0.3f, magnitude: 0.4f);
-        } else { 
-            AudioManager.Instance.PlaySFX("mancing-gagal");
-            UIManager.instance.ShowPlayerBubble("HUFT, UNLUCKY!"); 
         }
-        yield return new WaitForSeconds(1.0f); 
+        else {
+            AudioManager.Instance.PlaySFX("mancing-gagal");
+            UIManager.instance.ShowPlayerBubble("IT ESCAPED..."); 
+        }
 
-        // UIManager.instance.ShowNotification("SIAP MEMANCING LAGI.");
-        playerAnimator.PlayIdle(); // Return to idle
-        isBusy = false; // TAMBAH INI - unlock player input
+        yield return new WaitForSeconds(1.0f); 
+        playerAnimator.PlayIdle(); 
+        isBusy = false; 
         currentFishingState = FishingState.None;
     }
-
-    // --- Logika Transisi Perahu ---
+        // --- Logika Transisi Perahu ---
     private void ToggleBoatMode()
     {
         isOnBoat = !isOnBoat; 
@@ -554,6 +703,14 @@ public class PlayerController : MonoBehaviour
             currentPromptAssetScript = assetScript; // <-- Simpan referensinya
         }
 
+        // --- TAG BARU: ShopZone ---
+        if (other.CompareTag("ShopZone")) {
+            isInShopZone = true;
+            // Tampilkan notifikasi cara beli
+            // Kalau kamu pakai sistem PromptAsset, set di Inspector unity-nya.
+            // UIManager.instance.ShowPersistentNotification(shopText);
+        }
+
         if (other.CompareTag("Dock")) {
             isAtDock = true;
             // UIManager.instance.ShowPersistentNotification("TEKAN 'E' UNTUK NAIK PERAHU.");
@@ -585,6 +742,10 @@ public class PlayerController : MonoBehaviour
         UIManager.instance.HidePersistentNotification();
         currentPromptAssetScript = null;
 
+
+        if (other.CompareTag("ShopZone")) {
+            isInShopZone = false;
+        }
         if (other.CompareTag("Dock")) { 
             isAtDock = false;
             // UIManager.instance.HidePersistentNotification();
