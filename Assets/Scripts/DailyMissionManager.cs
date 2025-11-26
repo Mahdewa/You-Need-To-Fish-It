@@ -153,7 +153,7 @@ public class DailyMissionManager : MonoBehaviour
     private void TriggerGameOver()
     {
         Debug.Log("GAME OVER: Target harian tidak tercapai!");
-        SceneManager.LoadScene("MainMenu"); // Atau scene GameOver
+        SceneManager.LoadScene("GameOver"); // Atau scene GameOver
     }
 
     private void UpdateMissionUI()
